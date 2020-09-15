@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
+import { timestamp } from 'rxjs/operators';
 import { DatabaseService} from "../shared/database.service";
 
 @Component({
@@ -10,7 +11,7 @@ import { DatabaseService} from "../shared/database.service";
 export class DetailsPage implements OnInit {
 
   id:any;
-  reviews: string [];
+  reviews: any [];
   restaurant: any;
   restaurantDescription: string;
   description1: string;
@@ -26,6 +27,7 @@ export class DetailsPage implements OnInit {
     this.reviews = this.dataservice.fetchReviews(this.id);
 
 
+    
     this.dataservice.db.collection('restaurant').snapshotChanges().subscribe( res => {
       this.restaurant = [];
       res.forEach(a => {

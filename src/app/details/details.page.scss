@@ -21,9 +21,33 @@ ion-footer{
   }
   #more {display: none;}
 
+  .labels{
+    color:black;
+    font-weight: bold;
+    font-size:15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
   #myBtn{
     margin:auto;
   display:block;
+  color: black;
+  font-size:12px;
+  border-radius: 30%;
+  background-color: rgb(238, 210, 173);
  
+  }
+
+  #title{
+    color:black;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  #description{
+
+    color:black;
+    font-size:13px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
   
