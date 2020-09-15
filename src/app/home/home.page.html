@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="already">
+      Welcome
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-slides class="background" [options]="slideOptions"  #slider (ionSlidesDidLoad)="slidesDidLoad(slider)">
+    <ion-slide *ngFor="let image of ImageArray">
+      <img src="{{image.image}}" height="593"/></ion-slide>
+  </ion-slides>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col >
+        <ion-button [routerLink]="['/registration']" expand="block" class="register">Register</ion-button>
+
+        <span class="already">Already a user?</span>
+
+        <ion-button [routerLink]="['/dashboard']" expand="block" class="login">Sign In</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+ 
+</ion-content>
+<ion-footer >@Copyright agromis</ion-footer>

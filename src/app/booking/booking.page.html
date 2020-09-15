@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Book a table online</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list lines="full">
+    <form [formGroup]="reserveForm" (ngSubmit)="formSubmit()">
+      <ion-item>
+        
+        <ion-input placeholder="Name"formControlName="name" type="text" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        
+        <ion-select class= "bold"placeholder="Persons"formControlName="persons">
+          <ion-select-option value="1">1 Person</ion-select-option>
+          <ion-select-option value="2">2 Persons</ion-select-option>
+          <ion-select-option value="3">3 Persons</ion-select-option>
+          <ion-select-option value="4">4 Persons</ion-select-option>
+          <ion-select-option value="5">5 Persons</ion-select-option>
+          <ion-select-option value="6">6 Persons</ion-select-option>
+          <ion-select-option value="7">7 Persons</ion-select-option>
+          <ion-select-option value="8">8 Persons</ion-select-option>
+          <ion-select-option value="9">9 Persons</ion-select-option>
+          <ion-select-option value="10">10 Persons</ion-select-option>
+          <ion-select-option value="11">11 Persons</ion-select-option>
+          <ion-select-option value="12">12 Persons</ion-select-option>
+          <ion-select-option value="13">13 Persons</ion-select-option>
+          <ion-select-option value="14">14 Persons</ion-select-option>
+          <ion-select-option value="15">15 Persons</ion-select-option>
+          <ion-select-option value="16">16 Persons</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+     
+
+      <ion-item >
+        <ion-label></ion-label>
+        <ion-input [(ngModel)]="current" formControlName="restaurant"placeholder="Restaurant" type="text" required (ionInput)="filterList($event)"></ion-input>
+        
+        <ion-list  *ngIf = "searchTerm" >
+          <ion-list *ngFor="let item of foodList |slice:0:4">
+            <ion-button  class= "results"fill="clear"(click)="getCurrent(item.name)">{{item.name}}</ion-button>
+          </ion-list>
+        </ion-list>
+      </ion-item>
+        
+       
+     
+      
+
+      <ion-item>
+        <ion-input placeholder="Date" formControlName="date" type="date" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Time"formControlName="time" type="time" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Phone number"formControlName="phone" type="number" required>
+        </ion-input>
+      </ion-item>
+     
+      <ion-textarea>
+        <ion-input placeholder="  Note"formControlName="note" type="text" required>
+        </ion-input>
+      </ion-textarea>
+
+      <ion-row>
+        <ion-col>
+          <ion-button id="submit" type="submit"  shape="full" expand="block">Submit</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
+
+</ion-content>
+<ion-footer >@Copyright agromis</ion-footer>

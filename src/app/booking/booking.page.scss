@@ -1,0 +1,23 @@
+ion-header{
+    --ion-background-color:rgb(207, 248, 240);
+  }
+ion-content{
+    --ion-background-color:rgb(149, 228, 211);
+} 
+
+.bold{
+    font-weight: bold;
+}
+#submit{
+    --background:rgb(238, 210, 173);;
+    color: black;
+}
+.results{
+     color: brown;
+     font-size: xx-small;
+}
+ion-footer{
+    text-align: center;
+    color: black;
+    background-color:rgb(229, 238, 237);
+  }

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <h6 *ngFor="let item of restaurant">
+  <h1 >{{item.name}}</h1>
+  <img src="{{item.photo}}" width="250" height="200"style="middle;margin:0px 50px">
+  <p>{{description1}}<span id="dots">... </span><span id="more">{{description2}}</span></p><button (click)="showMoreFunction()" id="myBtn">Read more</button>
+  <br>
+  <label for="item.cousine">Cousine: {{item.cousine}}<br></label>
+  <label for="item.phone">Phone: {{item.phone}}<br></label>
+  <label for="item.site">Go to site: </label>
+  <a href="{{item.site}}">{{item.site}}<br></a>
+  <label for="item.location">Location: </label>
+
+  <br>
+  </h6>
+  <label >Reviews:</label>
+
+  <h6 *ngFor="let rev of reviews">
+    
+    <h6>{{rev.review}}</h6>
+    <h5>{{rev.vote}}</h5>
+    <h4>----------------------------------------------</h4>
+  </h6>
+
+</ion-content>
+
+<ion-footer >@Copyright agromis</ion-footer>
+

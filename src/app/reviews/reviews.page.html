@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar class="ios hydrated">
+    <ion-title class="ios title-ios hydrated">Create Review</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+
+  
+  <ion-list lines="full">
+    <form [formGroup]="createForm" (ngSubmit)="formSubmit()">
+      <ion-item >
+        <ion-select class= "bold"placeholder="Restaurants"formControlName="name">
+          <ion-item *ngFor="let item of restaurants">
+            <ion-select-option value={{item.name}}>{{item.name}}</ion-select-option>
+          </ion-item>
+        </ion-select>
+        <ion-input formControlName="name" type="text" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        
+        <ion-input formControlName="review" placeholder="   My review" type="text" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-range formControlName="vote" min="0" max="10" >Rating
+              <ion-label slot="start">0</ion-label>
+              <ion-label slot="end">10</ion-label>
+        </ion-range>
+        
+       
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit"   expand="block">Create Review</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
+</ion-content>
+
+<ion-footer >@Copyright agromis</ion-footer>

@@ -1,0 +1,49 @@
+ion-header{
+  --ion-background-color:white;
+}
+
+.button1 {
+ 
+  --border-radius: 30%;
+  --vertical-align: middle;
+  --padding-start: 4px;
+  --padding-end: 4px;
+  --background: rgb(238, 210, 173);
+ 
+  --background-activated: green;
+  --color: rgb(27, 26, 26);
+  --color-activated: white;
+ 
+}
+.button2 {
+ 
+  --border-radius: 30%;
+  --vertical-align: middle;
+  --padding-start: 21px;
+  --padding-end: 21px;
+  --background: rgb(238, 210, 173);
+
+  --background-activated: green;
+  --color: rgb(27, 26, 26);
+  --color-activated: white;
+ 
+}
+.searchbar{
+  --background:rgb(241, 241, 241);
+}
+
+
+ion-content{
+  --ion-background-color:rgb(149, 228, 211);
+
+  } 
+
+  .already{
+    color: black;
+  }
+
+  ion-footer{
+    text-align: center;
+    color: black;
+    background-color: rgb(229, 238, 237)
+  }

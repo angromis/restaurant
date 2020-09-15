@@ -1,0 +1,29 @@
+ion-header{
+    --ion-background-color:rgb(207, 248, 240);
+  }
+h1{
+    text-align: center;
+}
+ion-content{
+    --ion-background-color:rgb(149, 228, 211);
+}
+
+p{
+    text-align: center;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+ion-footer{
+    text-align: center;
+    color: black;
+    background-color: rgb(229, 238, 237)
+  }
+  #more {display: none;}
+
+  #myBtn{
+    margin:auto;
+  display:block;
+ 
+  }
+  
