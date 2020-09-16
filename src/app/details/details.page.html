@@ -12,11 +12,112 @@
     <h1 id="title" >{{item.name}}</h1>
   
     <img src="{{item.photo}}" width="250" height="200"style="middle;margin:0px 50px">
+
+
+
     <p id="description">{{description1}}<span id="dots">... </span><span id="more">{{description2}}</span></p><button (click)="showMoreFunction()" id="myBtn">Read more</button>
     <br>
   <label class="labels" for="item.cousine">Cousine: </label>
   <p>{{item.cousine}}</p>
 
+  <br>
+
+  <label class="labels" for="item.cousine">Rating: </label>
+
+  <div class="container">
+
+
+    <div style="text-align: center;" *ngIf="item.rating===0">
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+    </div>
+
+    <div style="text-align: center;" *ngIf="item.rating>0 && item.rating<=1.8">
+      <ion-icon name="star-half"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+    </div>
+
+    <div style="text-align: center;" *ngIf="item.rating>1.8 && item.rating<=2.8">
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+    </div>
+
+    <div style="text-align: center;" *ngIf="item.rating>2.8 && item.rating<=3.8">
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star-half"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+    </div>
+
+    <div style="text-align: center;" *ngIf="item.rating>3.8 && item.rating<=4.8">
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+    </div>
+
+    <div style="text-align: center;" *ngIf="item.rating>4.8 && item.rating<=5.8">
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star-half"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+    </div>
+
+    <div style="text-align: center;" *ngIf="item.rating>5.8 && item.rating<=6.8">
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+    </div>
+
+    <div style="text-align: center;" *ngIf="item.rating>6.8 && item.rating<=7.8">
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star-half"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+    </div>
+
+    <div style="text-align: center;" *ngIf="item.rating>7.8 && item.rating<=8.8">
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+    </div>
+
+    <div style="text-align: center;" *ngIf="item.rating>8.8 && item.rating<=9.8">
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star-half"></ion-icon>
+    </div>
+
+    <div style="text-align: center;" *ngIf="item.rating>9.8">
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+    </div>
+   
+  </div>
+
+  <br>
   <br>
   <label class="labels" for="item.phone">Phone: </label>
   <p>{{item.phone}}</p>
