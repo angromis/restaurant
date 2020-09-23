@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Details</ion-title>
+    <ion-title style="font-size: x-large;">Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -142,7 +142,8 @@
   <h6 *ngFor="let rev of reviews">
  
     
-    <p style="font-size:13px; color:rgb(93, 21, 111); font-style:italic;">{{rev.review}}</p>
+    <p style="font-size:13px; color:rgb(93, 21, 111); font-style:italic;">"{{rev.review}}"</p>
+    <p style="font-size: 13px; color: sienna;">by {{rev.user}}</p>
     <div style="align-content: center;">
 
 

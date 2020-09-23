@@ -4,7 +4,7 @@
       <ion-buttons slot="start">
         <ion-button fill="outline" size="small"type="submit" (click)="authService.SignOut()" color="danger">Logout</ion-button>
       </ion-buttons>
-    <ion-title class="already">Hello, kitso</ion-title>
+    <ion-title style="font-size: x-large;">Hello, kappa</ion-title>
    
   </ion-toolbar>
   
@@ -37,7 +37,7 @@
   
   
   <ion-card-content>
-    <ion-label style="font-size: x-large;" class="already">Top Restaurants</ion-label>
+    <ion-label style="font-size: x-large;" >Check Restaurants</ion-label>
     <ion-slides class="background" [options]="slideOptions"  #slider (ionSlidesDidLoad)="slidesDidLoad(slider)">
       <ion-slide *ngFor="let item of restList" (click)="getDetailedRestaurant(item.id)">
 

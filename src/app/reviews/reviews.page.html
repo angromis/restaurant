@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title class="ios title-ios hydrated">Create Review</ion-title>
+    <ion-title style="font-size: x-large;">Create Review</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -28,9 +28,9 @@
         </ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-range formControlName="vote" min="0" max="10" >Rating
-              <ion-label slot="start">0</ion-label>
+      <ion-item >
+        <ion-range style="color: sandybrown;" formControlName="vote" min="0" max="10" >Rating
+              <ion-label  slot="start">0</ion-label>
               <ion-label slot="end">10</ion-label>
         </ion-range>
         
@@ -39,7 +39,7 @@
 
       <ion-row>
         <ion-col>
-          <ion-button type="submit"   expand="block">Create Review</ion-button>
+          <ion-button class="submit" type="submit"   expand="block">Create Review</ion-button>
         </ion-col>
       </ion-row>
     </form>

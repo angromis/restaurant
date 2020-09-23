@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Sign in User</ion-title>
+    <ion-title style="font-size: x-large;">Sign in User</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -21,7 +21,7 @@
 
     <ion-row>
       <ion-col> 
-      <ion-button type="submit" (click)="logIn(email, password)" expand="block">Login</ion-button>
+      <ion-button class="submit" type="submit" (click)="logIn(email, password)" expand="block">Login</ion-button>
       </ion-col>
     </ion-row>
 
@@ -31,12 +31,15 @@
       <ion-col> 
         <ion-button 
          type="submit" 
-         color="danger"
+         class="google"
          (click)="authService.GoogleAuth()" 
          expand="block">
-           Login with Google
+         <ion-icon name="logo-google"></ion-icon>
+           oogle
         </ion-button>
-        <a [routerLink]="['/reset-password']" class="small-text">Reset Password?</a>
+        <br>
+        <br>
+        <a [routerLink]="['/reset-password']" >Reset Password?</a>
       </ion-col>
     </ion-row>
 

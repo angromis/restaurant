@@ -3,11 +3,28 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>hot</ion-title>
+    <ion-title style="font-size: x-large;">
+      <ion-icon style="color: rgb(226, 107, 107);" name="flame"></ion-icon>
+      HOT
+      <ion-icon style="color: rgb(226, 107, 107);" name="flame"></ion-icon>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <hr>
+  <label style="font-size: 20px; color: red;"><ion-icon name="warning"></ion-icon>Special Offers<ion-icon name="warning"></ion-icon></label>
+  <ion-slides  class="background" [options]="slideOptions"  #slider (ionSlidesDidLoad)="slidesDidLoad(slider)">
+    <ion-slide *ngFor="let item of offers" class="news" >{{item}}</ion-slide>
+  </ion-slides>
+  <h3 class="title">
+    The best Restaurants are HERE!
+  </h3>
+  <div *ngFor="let item of bestRestaurants" (click)="getDetailedRestaurant(item.id)">
+
+    <label class="nameLabel" for="{{item.name}}">{{item.name}}</label>
+    <img src="{{item.photo}}" alt="{{item.name}}">
+  </div>
 
 </ion-content>
 <ion-footer >@Copyright agromis</ion-footer>

@@ -33,7 +33,7 @@ export class DashboardPage implements OnInit {
     public authService: AuthenticationService
   ) { 
    //this.userlogedin = this.authService.getUser();
-  
+  //this.userlogedin.displayName = "Kitsos";
     
   }
 

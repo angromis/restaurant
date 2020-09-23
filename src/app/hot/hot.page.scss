@@ -1,6 +1,12 @@
 
 ion-header{
   --ion-background-color:rgb(207, 248, 240);
+  --ion-text-color:rgb(238, 210, 173);;
+  text-align: center;
+  font-style: italic;
+  
+  
+  text-shadow: 2px 2px 4px black;
 }
 ion-content{
   --ion-background-color:rgb(149, 228, 211);
@@ -10,3 +16,19 @@ ion-footer{
     color: black;
     background-color: rgb(229, 238, 237)
   }
+
+.title{
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+.nameLabel{
+  text-align: center;
+  color:rgb(238, 210, 173);
+  text-shadow: 2px 2px 2px black;
+  font-size: x-large;
+}
+.news{
+  font-size: small;
+  background-color: lightgray;
+}

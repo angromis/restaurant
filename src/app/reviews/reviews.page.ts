@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DatabaseService } from './../shared/database.service'; 
+import { AuthenticationService } from "../shared/authentication.service";
 @Component({
   selector: 'app-reviews',
   templateUrl: './reviews.page.html',
@@ -13,13 +14,15 @@ export class ReviewsPage implements OnInit {
 
   constructor( private rstService: DatabaseService,
     private router: Router,
-    public fb: FormBuilder) { }
+    public fb: FormBuilder,
+    public authService: AuthenticationService) { }
 
   ngOnInit() {
     this.createForm = this.fb.group({
       name:[''],
       review:[''],
-      vote:['']
+      vote:[''],
+      user:[this.authService.getUser().displayName]
     })
    
    this.restaurants = this.rstService.fetchRestaurants();

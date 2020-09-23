@@ -52,6 +52,32 @@ export class DatabaseService {
      return restaurants;     
 
   }
+  fetchBestRestaurants(){
+
+    let restaurants = [];
+    let gap = 7.5;
+
+    this.db.collection('restaurant').snapshotChanges().subscribe( res => {
+     
+      res.forEach(a => {
+      
+
+        let item:any = a.payload.doc.data();
+        item.id = a.payload.doc.id;
+
+
+        if(item.rating>gap){
+          restaurants.push(item);
+        }
+        
+
+      });
+      
+     
+    });   
+       
+     return restaurants; 
+  }
   
   
   fetchReviews(name){
@@ -83,22 +109,15 @@ export class DatabaseService {
 
  
 
-  kala(){
-    let ola = [];
-    ola.push("wwewe");
-    ola.push("oppapappaapa");
-
-    console.log(ola);
-    return ola;
-  }
 
   
 addReview(rev: Review){
       let name =  rev.name;
       let review =  rev.review;
       let vote = rev.vote;
+      let userName = rev.user;
     
-  return firebase.firestore().collection('reviews').doc().set({name: name, review: review, vote: vote})
+  return firebase.firestore().collection('reviews').doc().set({name: name, review: review, vote: vote, user:userName});
   
 }
 

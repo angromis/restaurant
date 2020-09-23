@@ -20,15 +20,9 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
+      this.platform.ready().then(() => {
 
-      Environment.setEnv({
-        // api key for server
-        'API_KEY_FOR_BROWSER_RELEASE': 'YOUR_API_KEY_HERE',
-
-        // api key for local development
-        'API_KEY_FOR_BROWSER_DEBUG': 'YOUR_API_KEY_HERE'
-      });
+     
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
