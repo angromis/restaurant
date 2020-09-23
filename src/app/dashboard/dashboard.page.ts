@@ -95,7 +95,7 @@ export class DashboardPage implements OnInit {
   }
 
   getDetailedRestaurant(id: string){
-    console.log(id)
+    
     this.router.navigate(['/details/',id]);
   }
   slidesDidLoad(slides: IonSlides) {

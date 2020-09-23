@@ -9,6 +9,7 @@ import { map, retryWhen } from  'rxjs/operators';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import { resolve } from 'url';
+import { Geoposition } from '@ionic-native/geolocation/ngx';
 
 
 @Injectable({
@@ -51,6 +52,7 @@ export class DatabaseService {
      return restaurants;     
 
   }
+  
   
   fetchReviews(name){
     let reviews = [];

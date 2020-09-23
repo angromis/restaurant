@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { timestamp } from 'rxjs/operators';
+
 import { DatabaseService} from "../shared/database.service";
 
 @Component({
@@ -13,7 +13,6 @@ export class DetailsPage implements OnInit {
   id:any;
   reviews: any [];
   restaurant: any;
-  restaurantDescription: string;
   description1: string;
   description2: string;
   constructor( private actRoute: ActivatedRoute,
@@ -36,14 +35,15 @@ export class DetailsPage implements OnInit {
        
         if(item.id == this.id){
           this.restaurant.push(item);
-          this.restaurantDescription = item.description;
-          this.showMoreString(this.restaurantDescription);
+         
+          this.showMoreString(item.description);
          
         }
        
        
       });
     });
+   
   }
   showMoreString(theString){
 

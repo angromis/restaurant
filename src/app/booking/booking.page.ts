@@ -30,7 +30,7 @@ export class BookingPage implements OnInit {
     this.foodList = await this.initializeItems();
   }
   formSubmit(){
-    console.log(this.reserveForm.value)
+    
     this.reserveForm.reset();
     window.alert('You reservation request has been sent to the restaurant. They will call you for a confirmation. Thank you!')
     this.router.navigate(['dashboard']);    
@@ -38,7 +38,7 @@ export class BookingPage implements OnInit {
   getCurrent(myname: string){
     this.current = myname
     
-    console.log(this.reserveForm.value)
+   
   }
 
   async initializeItems(): Promise<any> {

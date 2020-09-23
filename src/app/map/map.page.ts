@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService} from "../shared/database.service";
 import {
   ToastController,
   Platform
@@ -11,6 +12,7 @@ import {
   GoogleMapsAnimation,
   MyLocation
 } from '@ionic-native/google-maps';
+import { Geoposition } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-map',
@@ -21,34 +23,66 @@ export class MapPage implements OnInit {
 
   map: GoogleMap;
   address:string;
+  restaurants: any [];
 
-  constructor( public toastCtrl: ToastController,
+  constructor( public toastCtrl: ToastController, public dataservice: DatabaseService,
     private platform: Platform) { 
-    
+
+      
   }
 
   ngOnInit() {
 
     this.platform.ready();
+    
+    this.restaurants = this.dataservice.fetchRestaurants();
+    
     this.loadMap();
+    
   }
 
   loadMap() {
+    
+    console.log("******");
+    console.log(this.restaurants.length);
     this.map = GoogleMaps.create('map_canvas', {
-      //  camera: {
-      //   target: {
-      //     lat: 43.0741704,
-      //     lng: -89.3809802
-      //   },
-      //    zoom: 18,
-      //    tilt: 30
-      //  }
+       camera: {
+        target: {
+          lat: 37.0741704,
+          lng: 23.0009802
+        },
+         zoom: 10,
+         tilt: 30
+       }
     });
-    //this.goToMyLocation();
+    this.createMarkers();
+    this.goToMyLocation();
+  }
+
+  createMarkers(){
+
+    console.log("----");
+    this.restaurants.forEach(element => {
+
+      
+      let  marker2:Marker = this.map.addMarkerSync({
+        title: '',
+        snippet: element.name,
+        position: {
+          lat: element.location.latitude,
+          lng: element.location.longitude
+        },
+        animation: GoogleMapsAnimation.BOUNCE
+
+      });
+      
+      marker2.showInfoWindow();
+    });
+
   }
 
   goToMyLocation(){
-    this.map.clear();
+    //this.map.clear();
 
     // Get the location of you
     this.map.getMyLocation().then((location: MyLocation) => {
@@ -68,9 +102,14 @@ export class MapPage implements OnInit {
         position: location.latLng,
         animation: GoogleMapsAnimation.BOUNCE
       });
+      
+
+     
 
       //show the infoWindow
+      
       marker.showInfoWindow();
+      
 
       //If clicked it, display the alert
       marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
