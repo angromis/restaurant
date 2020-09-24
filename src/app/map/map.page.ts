@@ -44,9 +44,7 @@ export class MapPage implements OnInit {
 
   loadMap() {
     
-    console.log("******");
-    console.log(this.restaurants);
-    console.log(this.restaurants.length);
+    
     this.map = GoogleMaps.create('map_canvas', {
        camera: {
         target: {

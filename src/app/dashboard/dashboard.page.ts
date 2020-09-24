@@ -40,6 +40,7 @@ export class DashboardPage implements OnInit {
   ngOnInit(){
 
     this.updateRestaurants();
+    this.dataService.showPosition();
     
   
   }
