@@ -39,6 +39,7 @@ export class MapPage implements OnInit {
     this.restaurants = this.dataservice.fetchRestaurants();
     
     this.loadMap();
+    console.log("a change");
     
   }
 
