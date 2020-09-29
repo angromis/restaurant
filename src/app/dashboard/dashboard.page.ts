@@ -32,15 +32,15 @@ export class DashboardPage implements OnInit {
     private router: Router,
     public authService: AuthenticationService
   ) { 
-   //this.userlogedin = this.authService.getUser();
-  //this.userlogedin.displayName = "Kitsos";
+   this.userlogedin = this.authService.getUser();
+  
     
   }
 
   ngOnInit(){
 
     this.updateRestaurants();
-    this.dataService.showPosition();
+    
     
   
   }
@@ -94,6 +94,12 @@ export class DashboardPage implements OnInit {
     });
     
   }
+  bookNow(id: string){
+  
+    
+    this.router.navigate(['/booking/',id]);
+  
+}
 
   getDetailedRestaurant(id: string){
     

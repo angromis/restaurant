@@ -133,7 +133,11 @@
   <p>{{item.location.latitude}}</p>
 
   <br>
-  </div>
+  
+  <br>
+  <ion-button  expand="block" class="booking" (click)="bookNow(item.name)">Make a reservation now</ion-button>
+</div>
+  <br>
   <label class="labels" >Reviews:</label>
 
   <div *ngIf="reviews.length===0">

@@ -44,4 +44,11 @@ export class HotPage implements OnInit {
     this.router.navigate(['/details/',id]);
   }
 
+  bookNow(id: string){
+  
+    
+    this.router.navigate(['/booking/',id]);
+  
+}
+
 }

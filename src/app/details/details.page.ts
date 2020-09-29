@@ -45,6 +45,14 @@ export class DetailsPage implements OnInit {
     });
    
   }
+
+  bookNow(id: string){
+  
+    
+      this.router.navigate(['/booking/',id]);
+    
+  }
+
   showMoreString(theString){
 
     let index = theString.indexOf(" ", 50);

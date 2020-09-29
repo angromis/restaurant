@@ -11,7 +11,7 @@ import 'firebase/firestore';
 import { NativeGeocoder,  NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 
 
-import { Geolocation } from '@ionic-native/geolocation/ngx'
+
 
 @Injectable({
   providedIn: 'root'
@@ -35,8 +35,8 @@ export class DatabaseService {
     maxResults: 5
   };
 
-  constructor(public db: AngularFirestore, private db2: AngularFireDatabase, private geolocation: Geolocation,
-    private nativeGeocoder: NativeGeocoder ) {
+  constructor(public db: AngularFirestore, private db2: AngularFireDatabase
+   ) {
    
   }
 
@@ -118,16 +118,16 @@ export class DatabaseService {
   }
 
 
-  getGeolocation(){
-    this.geolocation.getCurrentPosition().then((resp) => {
-      this.geoLatitude = resp.coords.latitude;
-      this.geoLongitude = resp.coords.longitude; 
-      this.geoAccuracy = resp.coords.accuracy; 
-      this.getGeoencoder(this.geoLatitude,this.geoLongitude);
-     }).catch((error) => {
-       alert('Error getting location'+ JSON.stringify(error));
-     });
-  }
+  // getGeolocation(){
+  //   this.geolocation.getCurrentPosition().then((resp) => {
+  //     this.geoLatitude = resp.coords.latitude;
+  //     this.geoLongitude = resp.coords.longitude; 
+  //     this.geoAccuracy = resp.coords.accuracy; 
+  //   //   this.getGeoencoder(this.geoLatitude,this.geoLongitude);
+  //   //  }).catch((error) => {
+  //   //    alert('Error getting location'+ JSON.stringify(error));
+  //     });
+  // }
 
 
   

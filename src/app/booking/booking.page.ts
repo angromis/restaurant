@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { first } from 'rxjs/operators';
 
@@ -14,9 +14,18 @@ export class BookingPage implements OnInit {
   public foodList: any[];
   current:string ;
   searchTerm:any;
-  constructor(public fb: FormBuilder,  public router: Router, private firestore: AngularFirestore ) { }
+  id:any;
+
+  constructor(private actRoute: ActivatedRoute, public fb: FormBuilder,  public router: Router, private firestore: AngularFirestore ) {
+
+   
+
+   }
   
   async ngOnInit() {
+    
+    this.id = this.actRoute.snapshot.paramMap.get('id');
+    console.log(this.id);
     this.reserveForm = this.fb.group({
       name: [''],
       persons:[''],
@@ -27,8 +36,19 @@ export class BookingPage implements OnInit {
       note:['']
 
     })
-    this.foodList = await this.initializeItems();
+    
+    
   }
+
+  getDisableInput(){
+    if (this.id === " "){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
   formSubmit(){
     
     this.reserveForm.reset();
@@ -44,6 +64,7 @@ export class BookingPage implements OnInit {
   async initializeItems(): Promise<any> {
     const foodList = await this.firestore.collection('restaurant')
       .valueChanges().pipe(first()).toPromise();
+      
     return foodList;
   }
   async filterList(evt) {

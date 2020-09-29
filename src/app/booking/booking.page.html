@@ -43,7 +43,7 @@
 
       <ion-item >
         <ion-label></ion-label>
-        <ion-input [(ngModel)]="current" formControlName="restaurant"placeholder="Restaurant" type="text" required (ionInput)="filterList($event)"></ion-input>
+        <ion-input [(ngModel)]="current" formControlName="restaurant" [placeholder]="getDisableInput() ? ' ' : 'Restaurant' " type="text" required (ionInput)="filterList($event)" [disabled] = "getDisableInput()">{{this.id}}</ion-input>
         
         <ion-list  *ngIf = "searchTerm" >
           <ion-list *ngFor="let item of foodList |slice:0:4">

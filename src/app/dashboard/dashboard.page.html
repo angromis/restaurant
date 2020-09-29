@@ -4,7 +4,7 @@
       <ion-buttons slot="start">
         <ion-button fill="outline" size="small"type="submit" (click)="authService.SignOut()" color="danger">Logout</ion-button>
       </ion-buttons>
-    <ion-title style="font-size: x-large;">Hello, kappa</ion-title>
+    <ion-title style="font-size: x-large;">Hello, {{userlogedin.displayName}}</ion-title>
    
   </ion-toolbar>
   
@@ -25,7 +25,7 @@
         <ion-button  [routerLink]="['/reviews']" class="button1" style="text-transform: none;" >Reviews</ion-button>
       </ion-col >
       <ion-col size-lg="4" size-md="4" size-sm="4" size="3">
-        <ion-button  [routerLink]="['/booking']"class="button1" style="text-transform: none;">Booking</ion-button>
+        <ion-button  (click)="bookNow(' ')" class="button1" style="text-transform: none;">Booking</ion-button>
       </ion-col>
       <ion-col size-lg="4" size-md="4" size-sm="4" size="3">
         <ion-button  [routerLink]="['/map']"class="button2" style="text-transform: none;">Map</ion-button>

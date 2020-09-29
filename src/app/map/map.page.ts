@@ -12,7 +12,7 @@ import {
   GoogleMapsAnimation,
   MyLocation
 } from '@ionic-native/google-maps';
-import { Geoposition } from '@ionic-native/geolocation/ngx';
+
 
 @Component({
   selector: 'app-map',

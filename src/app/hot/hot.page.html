@@ -17,6 +17,12 @@
   <ion-slides  class="background" [options]="slideOptions"  #slider (ionSlidesDidLoad)="slidesDidLoad(slider)">
     <ion-slide *ngFor="let item of offers" class="news" >{{item}}</ion-slide>
   </ion-slides>
+  <hr>
+  <br>
+  <div>
+    <ion-button  id="reserveBtn" (click)="bookNow(' ')">Book now</ion-button>
+  </div>
+  
   <h3 class="title">
     The best Restaurants are HERE!
   </h3>
