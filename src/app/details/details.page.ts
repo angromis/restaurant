@@ -45,6 +45,10 @@ export class DetailsPage implements OnInit {
     });
    
   }
+  getDetailedTag(id: string){
+    
+    this.router.navigate(['/tags/',id]);
+  }
 
   bookNow(id: string){
   
