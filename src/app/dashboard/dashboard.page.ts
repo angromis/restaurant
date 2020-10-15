@@ -26,6 +26,10 @@ export class DashboardPage implements OnInit {
    
    count: any;
 
+   isItemAvailable = false;
+   items = [];
+   
+
 
   constructor(
     public dataService: DatabaseService,
@@ -40,10 +44,66 @@ export class DashboardPage implements OnInit {
   ngOnInit(){
 
     this.updateRestaurants();
+   
+   
     
     
   
   }
+
+
+
+
+  initializeItems(){
+    
+
+    
+    this.dataService.db.collection('restaurant').snapshotChanges().subscribe( res => {
+     
+      res.forEach(a => {
+      
+
+        let item:any = a.payload.doc.data();
+        item.id = a.payload.doc.id;
+
+       
+
+          this.items.push(item.name);
+          this.items.push(item.cousine[0]);
+          this.items.push(item.cousine[1]);
+          this.items.push(item.cousine[2]);
+          this.items.push(item.phone);
+          this.items.push(item.site);
+
+
+
+      });
+      
+     
+    });   
+       
+    
+    
+  }
+
+  getItems(ev: any) {
+      // Reset items back to all of the items
+      this.initializeItems();
+
+      // set val to the value of the searchbar
+      const val = ev.target.value;
+
+      // if the value is an empty string don't filter the items
+      if (val && val.trim() !== '') {
+          this.isItemAvailable = true;
+          this.items = this.items.filter((item) => {
+              return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+          })
+      } else {
+          this.isItemAvailable = false;
+      }
+  }
+
 
   updateRestaurants(){
 

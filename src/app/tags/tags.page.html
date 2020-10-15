@@ -8,7 +8,21 @@
 </ion-header>
 
 <ion-content>
-  <h2>{{id}}</h2>
+  <h1 id="title" >{{id}}</h1>
+  <p>Check more restaurants with the tag name "{{id}}"</p>
+
+  <br>
+
+  <div *ngFor="let restaurant of restaurants" (click)="getDetailedRestaurant(restaurant.id)">
+
+    <p>
+      {{restaurant.name}}
+    </p>
+    <p>
+      <img src="{{restaurant.photo}}"   width="100" height="100" alt="{{restaurant.name}}"/>
+    </p>
+
+  </div>
 
 </ion-content>
 

@@ -13,7 +13,10 @@
 <ion-content padding class="background">
   <ion-grid  >
     <ion-row>
-      <ion-searchbar class="searchbar"></ion-searchbar>
+      <ion-searchbar class="searchbar" type="text" debounce="500" (ionChange)="getItems($event)"></ion-searchbar>
+     <ion-list *ngIf="isItemAvailable">
+         <ion-item *ngFor="let item of items">{{ item }}</ion-item>
+     </ion-list>
     </ion-row>
     <ion-row class="ion-align-items-start">
      

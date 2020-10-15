@@ -36,7 +36,7 @@ export class MapPage implements OnInit {
 
     this.platform.ready();
     
-    this.restaurants = this.dataservice.fetchRestaurants();
+    
     
     this.loadMap();
     console.log("a change");
@@ -62,23 +62,41 @@ export class MapPage implements OnInit {
 
   createMarkers(){
 
-    console.log("----");
-    this.restaurants.forEach(element => {
-
+    this.dataservice.db.collection('restaurant').snapshotChanges().subscribe( res => {
+     
+      res.forEach(a => {
       
-      let  marker2:Marker = this.map.addMarkerSync({
-        title: '',
-        snippet: element.name,
-        position: {
-          lat: element.location.latitude,
-          lng: element.location.longitude
-        },
-        animation: GoogleMapsAnimation.BOUNCE
+
+        let item:any = a.payload.doc.data();
+        item.id = a.payload.doc.id;
+
+        
+
+        let  marker2:Marker = this.map.addMarkerSync({
+          title: '',
+          snippet: item.name,
+          position: {
+            lat: item.location.latitude,
+            lng: item.location.longitude
+          },
+          
+          animation: GoogleMapsAnimation.BOUNCE
+  
+        });
+        
+        marker2.showInfoWindow();
+          
+          
+        
+        
 
       });
       
-      marker2.showInfoWindow();
+     
     });
+      
+      
+    
 
   }
 

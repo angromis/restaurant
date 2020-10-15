@@ -53,6 +53,7 @@ export class DatabaseService {
         let item:any = a.payload.doc.data();
         item.id = a.payload.doc.id;
 
+        
         restaurants.push(item);
 
       });
@@ -76,7 +77,7 @@ export class DatabaseService {
         let item:any = a.payload.doc.data();
         item.id = a.payload.doc.id;
 
-
+        
         if(item.rating>gap){
           restaurants.push(item);
         }
@@ -89,6 +90,106 @@ export class DatabaseService {
        
      return restaurants; 
   }
+  fetchSearchResults(){
+
+
+
+    let restaurants = [];
+
+    this.db.collection('restaurant').snapshotChanges().subscribe( res => {
+     
+      res.forEach(a => {
+      
+
+        let item:any = a.payload.doc.data();
+        item.id = a.payload.doc.id;
+
+       
+
+          restaurants.push(item.name);
+          restaurants.push(item.cousine[0]);
+          restaurants.push(item.cousine[1]);
+          restaurants.push(item.cousine[2]);
+          restaurants.push(item.phone);
+          restaurants.push(item.site);
+
+
+         
+    
+        
+        
+
+      });
+      
+     
+    });   
+       
+     return restaurants; 
+
+  }
+
+
+
+  
+
+
+  fetchTagRestaurants(tagName: string){
+
+    let restaurants = [];
+
+    this.db.collection('restaurant').snapshotChanges().subscribe( res => {
+     
+      res.forEach(a => {
+      
+
+        let item:any = a.payload.doc.data();
+        item.id = a.payload.doc.id;
+
+        if((item.cousine).includes(tagName)){
+
+          restaurants.push(item);
+         
+    
+        }
+        
+
+      });
+      
+     
+    });   
+       
+     return restaurants; 
+  }
+
+  // fetchLocationsRestaurants(){
+    
+  //   let restaurants = [];
+
+  //   this.db.collection('restaurant').snapshotChanges().subscribe( res => {
+     
+  //     res.forEach(a => {
+      
+
+  //       let item:any = a.payload.doc.data();
+  //       item.id = a.payload.doc.id;
+
+        
+
+  //         restaurants.push({lag:item.location.latitude, lon:item.location.longitude});
+          
+        
+        
+
+  //     });
+      
+     
+  //   });   
+    
+    
+       
+  //    return restaurants; 
+
+  // }
   
   
   fetchReviews(name){

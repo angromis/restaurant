@@ -18,10 +18,12 @@
     <p id="description">{{description1}}<span id="dots">... </span><span id="more">{{description2}}</span></p><button (click)="showMoreFunction()" id="myBtn">Read more</button>
     <br>
   <label class="labels" for="item.cousine">Cousine: </label>
-  <a (click)="getDetailedTag(item.cousine[0])">{{item.cousine[0]}},</a>
+  <p>
+    <a (click)="getDetailedTag(item.cousine[0])">{{item.cousine[0]}},</a> 
+    <a (click)="getDetailedTag(item.cousine[1])"> {{item.cousine[1]}},</a>
+    <a (click)="getDetailedTag(item.cousine[2])"> {{item.cousine[2]}}</a>
+  </p>
   
-  <a (click)="getDetailedTag(item.cousine[1])"> {{item.cousine[1]}},</a>
-  <a (click)="getDetailedTag(item.cousine[2])"> {{item.cousine[2]}}</a>
 
   <br>
 
