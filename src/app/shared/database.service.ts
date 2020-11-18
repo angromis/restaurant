@@ -8,7 +8,7 @@ import { Observable,  } from 'rxjs';
 import { map, retryWhen } from  'rxjs/operators';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
-import { NativeGeocoder,  NativeGeocoderOptions } from '@ionic-native/native-geocoder';
+//import { NativeGeocoder,  NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 
 
 
@@ -30,11 +30,7 @@ export class DatabaseService {
   geoAccuracy:number;
   geoAddress: string;
 
-  geoencoderOptions: NativeGeocoderOptions = {
-    useLocale: true,
-    maxResults: 5
-  };
-
+  
   constructor(public db: AngularFirestore, private db2: AngularFireDatabase
    ) {
    

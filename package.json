@@ -40,6 +40,7 @@
     "core-js": "^2.5.4",
     "firebase": "^7.14.2",
     "git": "^0.1.5",
+    "ionic": "^5.4.16",
     "ionic-selectable": "^3.4.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
