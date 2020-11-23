@@ -73,7 +73,7 @@ export class MapPage implements OnInit {
         
 
         let  marker2:Marker = this.map.addMarkerSync({
-          title: '',
+          title: item.name,
           snippet: item.name,
           position: {
             lat: item.location.latitude,
@@ -86,17 +86,12 @@ export class MapPage implements OnInit {
         
         marker2.showInfoWindow();
           
-          
-        
-        
 
       });
       
      
     });
       
-      
-    
 
   }
 
@@ -116,9 +111,11 @@ export class MapPage implements OnInit {
 
       //add a marker
       let marker: Marker = this.map.addMarkerSync({
-        title: 'You are here',
+        
         snippet: '',
         position: location.latLng,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+        title: 'You are here',
         animation: GoogleMapsAnimation.BOUNCE
       });
       

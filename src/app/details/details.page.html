@@ -9,6 +9,7 @@
 
 <ion-content >
   <div *ngFor="let item of restaurant">
+
     <h1 id="title" >{{item.name}}</h1>
   
     <img src="{{item.photo}}" width="250" height="200"style="middle;margin:0px 50px">
@@ -16,6 +17,8 @@
 
 
     <p id="description">{{description1}}<span id="dots">... </span><span id="more">{{description2}}</span></p><button (click)="showMoreFunction()" id="myBtn">Read more</button>
+    <br>
+    <ion-button>Go to Map</ion-button>
     <br>
   <label class="labels" for="item.cousine">Cousine: </label>
   <p>
