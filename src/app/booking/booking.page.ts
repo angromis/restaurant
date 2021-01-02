@@ -49,7 +49,7 @@ export class BookingPage implements OnInit {
     }
   }
 
-  formSubmit(){
+  formSubmit(){ 
     
     this.reserveForm.reset();
     window.alert('You reservation request has been sent to the restaurant. They will call you for a confirmation. Thank you!')

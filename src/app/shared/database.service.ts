@@ -37,7 +37,16 @@ export class DatabaseService {
   }
 
 
+  addReview(rev: Review){
+    let name =  rev.name;
+    let review =  rev.review;
+    let vote = rev.vote;
+    let userName = rev.user;
   
+return firebase.firestore().collection('reviews').doc().set({name: name, review: review, vote: vote, user:userName});
+
+}
+
   fetchRestaurants(){
     let restaurants = [];
 
@@ -228,15 +237,6 @@ export class DatabaseService {
 
 
   
-addReview(rev: Review){
-      let name =  rev.name;
-      let review =  rev.review;
-      let vote = rev.vote;
-      let userName = rev.user;
-    
-  return firebase.firestore().collection('reviews').doc().set({name: name, review: review, vote: vote, user:userName});
-  
-}
 
 
  
