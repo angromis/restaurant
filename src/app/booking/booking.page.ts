@@ -40,6 +40,9 @@ export class BookingPage implements OnInit {
     
   }
 
+  goHome(){
+    this.router.navigate(['/dashboard']); 
+  }
   getDisableInput(){
     if (this.id === " "){
       return false;

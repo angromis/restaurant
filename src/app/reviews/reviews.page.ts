@@ -46,10 +46,13 @@ export class ReviewsPage implements OnInit {
     }
     
     
-    console.log("~~~~~~~~~~~~")
+    
     this.router.navigate(['/dashboard']);
   }
 
+  goHome(){
+    this.router.navigate(['/dashboard']); 
+  }
  
  
 }

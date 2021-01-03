@@ -12,6 +12,7 @@ import {
   GoogleMapsAnimation,
   MyLocation
 } from '@ionic-native/google-maps';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class MapPage implements OnInit {
   restaurants: any ;
 
   constructor( public toastCtrl: ToastController, public dataservice: DatabaseService,
-    private platform: Platform) { 
+    private platform: Platform, private router: Router) { 
 
      
       
@@ -34,15 +35,18 @@ export class MapPage implements OnInit {
 
   ngOnInit() {
 
-    this.platform.ready();
+    // this.platform.ready();
     
     
     
-    this.loadMap();
-    console.log("a change");
+    // this.loadMap();
+    // console.log("a change");
     
   }
 
+  goHome(){
+    this.router.navigate(['/dashboard']); 
+  }
   loadMap() {
     
     

@@ -4,14 +4,17 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title style="font-size: x-large;">MAP</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon (click)="goHome()" style="color:rgb(0, 0, 0); zoom:2.0" name="home"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-  <div>
+  <!-- <div>
     <p>Check Restaurants</p>
   </div>
-  <div id="map_canvas" style="height: 100%;"></div>
+  <div id="map_canvas" style="height: 100%;"></div> -->
 </ion-content>
 <ion-footer >@Copyright agromis</ion-footer>

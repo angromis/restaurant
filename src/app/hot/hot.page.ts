@@ -50,5 +50,8 @@ export class HotPage implements OnInit {
     this.router.navigate(['/booking/',id]);
   
 }
+goHome(){
+  this.router.navigate(['/dashboard']); 
+}
 
 }

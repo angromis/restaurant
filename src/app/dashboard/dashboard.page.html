@@ -1,10 +1,13 @@
 
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"> </ion-menu-button>
+    </ion-buttons>
+      <ion-buttons slot="end">
         <ion-button fill="outline" size="small"type="submit" (click)="authService.SignOut()" color="danger">Logout</ion-button>
       </ion-buttons>
-    <ion-title style="font-size: x-large;">Hello, {{userlogedin}}</ion-title>
+    <ion-title style="font-size: x-large;">Hello, man</ion-title>
    
   </ion-toolbar>
   
@@ -18,7 +21,7 @@
          <ion-item *ngFor="let item of items">{{ item }}</ion-item>
      </ion-list>
     </ion-row>
-    <ion-row class="ion-align-items-start">
+    <!-- <ion-row class="ion-align-items-start">
      
 
       <ion-col size-lg="4" size-md="4" size-sm="4" size="3" >
@@ -34,7 +37,7 @@
         <ion-button  [routerLink]="['/map']"class="button2" style="text-transform: none;">Map</ion-button>
       </ion-col>
 
-    </ion-row>
+    </ion-row> -->
   </ion-grid>
 
   

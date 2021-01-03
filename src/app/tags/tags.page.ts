@@ -40,5 +40,8 @@ export class TagsPage implements OnInit {
     
     this.router.navigate(['/details/',id]);
   }
+  goHome(){
+    this.router.navigate(['/dashboard']); 
+  }
 
 }

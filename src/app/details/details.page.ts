@@ -45,6 +45,9 @@ export class DetailsPage implements OnInit {
     });
    
   }
+  goHome(){
+    this.router.navigate(['/dashboard']); 
+  }
   getDetailedTag(id: string){
     
     this.router.navigate(['/tags/',id]);
