@@ -26,7 +26,7 @@ export class ReviewsPage implements OnInit {
     })
    
    this.restaurants = this.rstService.fetchRestaurants();
-
+   
   }
    
   
