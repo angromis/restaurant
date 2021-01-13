@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:200028168037:android:6a1151f86ee920cdd40b8c",
         "android_client_info": {
-          "package_name": "com.myapp"
+          "package_name": "io.ionic.starter"
         }
       },
       "oauth_client": [

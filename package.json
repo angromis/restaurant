@@ -33,7 +33,7 @@
     "angular": "^1.8.2",
     "apache": "^0.1.0",
     "cordova": "^10.0.0",
-    "cordova-android": "8.1.0",
+    "cordova-android": "9.0.0",
     "cordova-browser": "6.0.0",
     "cordova-plugin-firebase-authentication": "^3.2.0",
     "cordova-support-android-plugin": "^1.0.2",
