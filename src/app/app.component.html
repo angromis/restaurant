@@ -5,33 +5,38 @@
         <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content>
+    <ion-content [ngClass]="{darkclass: dark=== true}">
       <ion-list>
         <ion-menu-toggle>
           <ion-item [routerLink]="['/hot']">
-            <ion-label>Hot</ion-label>
+            <ion-label [ngStyle]="{color: dark === true ? 'white' : 'black'}">Hot</ion-label>
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle>
           <ion-item [routerLink]="['/reviews']">
-            <ion-label>Reviews</ion-label>
+            <ion-label [ngStyle]="{color: dark === true ? 'white' : 'black'}">Reviews</ion-label>
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle>
           <ion-item [routerLink]="['/booking','']">
-            <ion-label >Booking</ion-label>
+            <ion-label [ngStyle]="{color: dark === true ? 'white' : 'black'}" >Booking</ion-label>
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle>
           <ion-item [routerLink]="['/map']">
-            <ion-label>Map</ion-label>
+            <ion-label [ngStyle]="{color: dark === true ? 'white' : 'black'}">Map</ion-label>
           </ion-item>
         </ion-menu-toggle>
-       
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/settings']">
+            <ion-icon [ngStyle]="{color: dark === true ? 'white' : 'black'}" name="settings-outline" slot="end"></ion-icon>
+            <ion-label [ngStyle]="{color: dark === true ? 'white' : 'black'}">Settings</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
         <ion-menu-toggle>
           <ion-item (click)="exitApp();">
-            <ion-icon name="exit-outline" slot="end"></ion-icon>
-            <ion-label>Exit</ion-label>
+            <ion-icon [ngStyle]="{color: dark === true ? 'white' : 'black'}" name="exit-outline" slot="end"></ion-icon>
+            <ion-label [ngStyle]="{color: dark === true ? 'white' : 'black'}">Exit</ion-label>
           </ion-item>
         </ion-menu-toggle>
 

@@ -236,7 +236,11 @@ return firebase.firestore().collection('reviews').doc().set({name: name, review:
   // }
 
 
-  
+  addSettings(hours: number, minutes: number, dark: boolean){
+   
+
+    return this.db.collection('settings').doc("daily").set({hours: hours, minutes: minutes, dark: dark});
+  }
 
 
  

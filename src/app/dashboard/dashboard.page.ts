@@ -36,7 +36,9 @@ export class DashboardPage implements OnInit {
     private router: Router,
     public authService: AuthenticationService
   ) { 
+    
    //this.userlogedin = this.authService.getUser();
+   //console.log(this.userlogedin);
   //this.userlogedin.displayName = "Kitsos";
     
   }

@@ -1,0 +1,29 @@
+ion-content {
+    --ion-background-color: rgb(231, 252, 248);
+  }
+  ion-header{
+    --ion-background-color: rgb(231, 252, 248);
+  }
+
+  .darkclass {
+    --ion-background-color: rgb(73, 44, 73);
+  }
+  
+  .openBack {
+    background-color: rgb(231, 252, 248);
+  }
+  
+  .darkBack {
+    background-color:rgb(73, 44, 73);
+  }
+  ion-toggle{
+    --background-checked: #ffffff;
+    --handle-background: #7a49a5;
+    --handle-background-checked: rgb(255, 255, 255);
+  }
+  .darkBtn{
+    --background:#21cf95;
+  }
+  .openBtn{
+    --background: #7a49a5;
+  }

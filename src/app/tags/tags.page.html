@@ -11,19 +11,23 @@
 </ion-header>
 
 <ion-content>
-  <h1 id="title" >{{id}}</h1>
-  <p>Check more restaurants with the tag name "{{id}}"</p>
+  <h1 id="title" >{{id}} <ion-badge color="primary">{{restaurants.length}}</ion-badge></h1>
+  <p>Check more restaurants with the tag name "{{id}}" </p>
 
   <br>
 
-  <div *ngFor="let restaurant of restaurants" (click)="getDetailedRestaurant(restaurant.id)">
+  <div *ngFor="let restaurant of restaurants" >
 
-    <p>
-      {{restaurant.name}}
-    </p>
-    <p>
-      <img src="{{restaurant.photo}}"   width="100" height="100" alt="{{restaurant.name}}"/>
-    </p>
+    <ion-item (click)="getDetailedRestaurant(restaurant.id)">
+      
+      <ion-avatar>
+        <ion-img src="{{restaurant.photo}}"   width="100" height="100" alt="{{restaurant.name}}"></ion-img>
+      </ion-avatar>
+      <p>
+        {{restaurant.name}}
+      </p>
+    </ion-item>
+   
 
   </div>
 
