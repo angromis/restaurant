@@ -25,35 +25,36 @@
 #container a {
   text-decoration: none;
 }
-ion-content{
-  --ion-background-color:rgb(149, 228, 211);
-} 
-ion-header{
-  --ion-background-color:rgb(207, 248, 240);
-  --ion-text-color:rgb(238, 210, 173);
+ion-content {
+  --ion-background-color: rgb(149, 228, 211);
+}
+ion-header {
+  --ion-background-color: rgb(207, 248, 240);
+  --ion-text-color: rgb(238, 210, 173);
   text-align: center;
   font-style: italic;
-  
-  
-  
+
   text-shadow: 6px 1px 6px black;
 }
 
-.login{
-  color:black;
-  --background:rgb(235, 238, 173);
+.login {
+  color: black;
+  --background: rgb(235, 238, 173);
 }
 
-.register{
-  color:black;
-  --background:rgb(238, 210, 173);
+.register {
+  color: black;
+  --background: rgb(238, 210, 173);
 }
-.already{
+.already {
   color: black;
   text-align: center;
 }
-ion-footer{
+ion-footer {
   text-align: center;
   color: black;
-  background-color:rgb(229, 238, 237);
+  background-color: rgb(229, 238, 237);
+}
+.darkMode {
+  --ion-background-color: rgb(34, 1, 65);
 }

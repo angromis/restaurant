@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { IonSlides } from '@ionic/angular'
 import { Platform } from '@ionic/angular';
+import { DatabaseService } from '../shared/database.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -16,8 +17,15 @@ export class HomePage {
     initialSlide: 1,
     speed: 400,
   };
+  dark;
 
-  constructor(public navCtrl: NavController, public platform: Platform) {
+  constructor(public navCtrl: NavController, public platform: Platform,private database: DatabaseService) {
+    this.database.db.collection('settings').doc("daily").snapshotChanges().subscribe(res => {
+      let item: any = res.payload.data();
+      this.dark = item.dark;
+     
+     
+    })
     this.ImageArray=[
       {'image':'../../assets/images/image1.jpg'},
       {'image':'../../assets/images/image2.jpg'},

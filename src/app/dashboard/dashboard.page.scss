@@ -1,29 +1,24 @@
-ion-header{
-  --ion-background-color:rgb(207, 248, 240);
-  --ion-text-color:rgb(0, 0, 0);
+ion-header {
+  --ion-background-color: rgb(207, 248, 240);
+  --ion-text-color: rgb(0, 0, 0);
   text-align: center;
   font-style: italic;
-  
-  
-  
+
   text-shadow: 6px 1px 6px black;
 }
 
 .button1 {
- 
   --border-radius: 30%;
   --vertical-align: middle;
   --padding-start: 4px;
   --padding-end: 4px;
   --background: rgb(238, 210, 173);
- 
+
   --background-activated: green;
   --color: rgb(27, 26, 26);
   --color-activated: white;
- 
 }
 .button2 {
- 
   --border-radius: 30%;
   --vertical-align: middle;
   --padding-start: 21px;
@@ -33,31 +28,27 @@ ion-header{
   --background-activated: green;
   --color: rgb(27, 26, 26);
   --color-activated: white;
- 
 }
-.searchbar{
-  --background:rgb(241, 241, 241);
+.searchbar {
+  --background: rgb(241, 241, 241);
 }
 
+ion-content {
+  --ion-background-color: rgb(149, 228, 211);
+}
 
-ion-content{
-  --ion-background-color:rgb(149, 228, 211);
+.title {
+  --ion-background-color: rgb(207, 248, 240);
+  --ion-text-color: rgb(238, 210, 173);
+  text-align: center;
+  font-style: italic;
+}
 
-  } 
-
-  .title{
-    --ion-background-color:rgb(207, 248, 240);
-    --ion-text-color:rgb(238, 210, 173);
-    text-align: center;
-    font-style: italic;
-    
-    
-    
-    text-shadow: 6px 1px 6px black;
-  }
-
-  ion-footer{
-    text-align: center;
-    color: black;
-    background-color: rgb(229, 238, 237)
-  }
+ion-footer {
+  text-align: center;
+  color: black;
+  background-color: rgb(229, 238, 237);
+}
+.darkMode {
+  --ion-background-color: rgb(34, 1, 65);
+}

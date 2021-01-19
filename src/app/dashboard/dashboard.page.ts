@@ -28,7 +28,7 @@ export class DashboardPage implements OnInit {
 
    isItemAvailable = false;
    items = [];
-   
+   dark;
 
 
   constructor(
@@ -36,6 +36,12 @@ export class DashboardPage implements OnInit {
     private router: Router,
     public authService: AuthenticationService
   ) { 
+    this.dataService.db.collection('settings').doc("daily").snapshotChanges().subscribe(res => {
+      let item: any = res.payload.data();
+      this.dark = item.dark;
+     
+     
+    })
     
    //this.userlogedin = this.authService.getUser();
    //console.log(this.userlogedin);

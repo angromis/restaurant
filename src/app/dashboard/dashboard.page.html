@@ -1,19 +1,19 @@
 
-<ion-header>
+<ion-header [ngClass]="{darkMode: dark=== true}" >
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button menu="main-menu"> </ion-menu-button>
+      <ion-menu-button [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" menu="main-menu"> </ion-menu-button>
     </ion-buttons>
       <ion-buttons slot="end">
         <ion-button  size="small"type="submit" (click)="authService.SignOut()" color="danger"><ion-icon style="zoom: 2.0;" name="log-out-outline"></ion-icon></ion-button>
       </ion-buttons>
-    <ion-title style="font-size: medium;">Hello, man</ion-title>
+    <ion-title [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="font-size: medium;">Hello, man</ion-title>
    
   </ion-toolbar>
   
 </ion-header>
 
-<ion-content padding class="background">
+<ion-content [ngClass]="{darkMode: dark=== true}" >
   <ion-grid  >
     <ion-row>
       <ion-searchbar class="searchbar" type="text" debounce="500" (ionChange)="getItems($event)"></ion-searchbar>
@@ -27,13 +27,13 @@
   
   
   <ion-card-content>
-    <ion-label style="font-size: x-large;" >Check Restaurants</ion-label>
+    <ion-label [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="font-size: x-large;" >Check Restaurants</ion-label>
     <ion-slides class="background" [options]="slideOptions"  #slider (ionSlidesDidLoad)="slidesDidLoad(slider)">
       <ion-slide *ngFor="let item of restList" (click)="getDetailedRestaurant(item.id)">
 
         <ion-grid>
           <ion-row>
-            <label>{{item.name}}</label>
+            <label [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}">{{item.name}}</label>
           </ion-row>  
          
           <ion-row>
