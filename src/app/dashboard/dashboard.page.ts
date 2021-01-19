@@ -23,6 +23,7 @@ export class DashboardPage implements OnInit {
   revList = [];
   num = 0;
   userlogedin : User;
+  userName:string;
    
    count: any;
 
@@ -43,13 +44,21 @@ export class DashboardPage implements OnInit {
      
     })
     
-   //this.userlogedin = this.authService.getUser();
+   
    //console.log(this.userlogedin);
   //this.userlogedin.displayName = "Kitsos";
     
   }
 
   ngOnInit(){
+    this.userlogedin = this.authService.getUser();
+
+    if(this.userlogedin===undefined){
+      this.userName = 'Guest';
+    }else{
+      this.userName = this.userlogedin.displayName;
+    }
+   console.log(this.userlogedin);
 
     this.updateRestaurants();
    

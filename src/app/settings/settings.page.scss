@@ -6,7 +6,7 @@ ion-content {
   }
 
   .darkclass {
-    --ion-background-color: rgb(73, 44, 73);
+    --ion-background-color:rgb(34, 1, 65);
   }
   
   .openBack {
@@ -18,12 +18,13 @@ ion-content {
   }
   ion-toggle{
     --background-checked: #ffffff;
-    --handle-background: #7a49a5;
+    --handle-background: rgb(34, 1, 65);
     --handle-background-checked: rgb(255, 255, 255);
   }
   .darkBtn{
-    --background:#21cf95;
+    --background:rgb(238, 210, 173);
+    --color: black;
   }
   .openBtn{
-    --background: #7a49a5;
+    --background: rgb(34, 1, 65);
   }

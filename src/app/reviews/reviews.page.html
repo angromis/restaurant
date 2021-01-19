@@ -12,8 +12,7 @@
 
 <ion-content>
  
-
-  
+<div *ngIf="canReview">
   <ion-list lines="full">
     <form [formGroup]="createForm" (ngSubmit)="formSubmit()">
       <ion-item >
@@ -47,6 +46,12 @@
       </ion-row>
     </form>
   </ion-list>
+</div>
+<div *ngIf="!canReview">
+  <p>You are in gueast Mode</p>
+</div>
+  
+  
 </ion-content>
 
 <ion-footer >@Copyright agromis</ion-footer>

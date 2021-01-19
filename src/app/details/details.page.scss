@@ -1,5 +1,5 @@
 ion-header{
-  --ion-background-color:rgb(207, 248, 240);
+  --ion-background-color:rgb(231, 252, 248);
   --ion-text-color:rgb(238, 210, 173);
   text-align: center;
   font-style: italic;
@@ -11,7 +11,7 @@ h1{
     text-align: center;
 }
 ion-content{
-    --ion-background-color:rgb(149, 228, 211);
+    --ion-background-color:rgb(231, 252, 248);
 }
 
 p{
@@ -32,16 +32,12 @@ ion-footer{
     font-weight: bold;
     font-size:20px;
     font-family: Ranchers;
-    text-shadow:2px 2px 4px rgb(238, 210, 173);
+    //text-shadow:2px 2px 4px rgb(238, 210, 173);
   }
 
   #myBtn{
-    margin:auto;
-  display:block;
-  color: black;
-  font-size:12px;
-  border-radius: 30%;
-  background-color: rgb(238, 210, 173);
+    --background:rgb(238, 210, 173);
+    --color:black;
  
   }
 
@@ -59,8 +55,8 @@ ion-footer{
   }
   a:link,a:visited,a{
     font-size: large;
-    color: rgb(238, 210, 173);
-    text-shadow: 2px 2px 4px black;
+    color: rgb(0, 0, 0);
+   
     font-size: medium;
   }
 
@@ -70,7 +66,14 @@ ion-footer{
     --background:rgb(238, 210, 173);
   }
   
-  .map{
-    background-color: rgb(149, 228, 211);
-    color: rgb(0, 0, 0);
+  .mapLight{
+    --background: rgb(231, 252, 248);
   }
+  .mapDark{
+    --background: rgb(34, 1, 65);
+    --ion-text-color:rgb(238, 210, 173);
+  }
+  .darkMode {
+    --ion-background-color: rgb(34, 1, 65);
+  }
+  

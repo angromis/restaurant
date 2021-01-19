@@ -15,8 +15,15 @@ export class DetailsPage implements OnInit {
   restaurant: any;
   description1: string;
   description2: string;
+  dark;
   constructor( private actRoute: ActivatedRoute,
     private router: Router, public dataservice: DatabaseService) { 
+      this.dataservice.db.collection('settings').doc("daily").snapshotChanges().subscribe(res => {
+        let item: any = res.payload.data();
+        this.dark = item.dark;
+       
+       
+      })
     this.id = this.actRoute.snapshot.paramMap.get('id');
   }
 

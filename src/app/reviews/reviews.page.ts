@@ -11,6 +11,7 @@ import { AuthenticationService } from "../shared/authentication.service";
 export class ReviewsPage implements OnInit {
   createForm: FormGroup;
   restaurants: string [];
+  canReview: boolean = false;
 
   constructor( private rstService: DatabaseService,
     private router: Router,
@@ -18,13 +19,21 @@ export class ReviewsPage implements OnInit {
     public authService: AuthenticationService) { }
 
   ngOnInit() {
-    this.createForm = this.fb.group({
-      name:[''],
-      review:[''],
-      vote:[''],
-      user:[this.authService.getUser().displayName]
-    })
-   
+    if(this.authService.getUser()===undefined)
+      this.canReview = false;
+    else{
+      this.canReview = true
+      this.createForm = this.fb.group({
+        name:[''],
+        review:[''],
+        vote:[''],
+        user:[this.authService.getUser().displayName]
+      })
+     
+    }
+      
+
+    
    this.restaurants = this.rstService.fetchRestaurants();
    
   }

@@ -7,7 +7,7 @@
       <ion-buttons slot="end">
         <ion-button  size="small"type="submit" (click)="authService.SignOut()" color="danger"><ion-icon style="zoom: 2.0;" name="log-out-outline"></ion-icon></ion-button>
       </ion-buttons>
-    <ion-title [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="font-size: medium;">Hello, man</ion-title>
+    <ion-title [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="font-size: medium;">Hello, {{userName}}</ion-title>
    
   </ion-toolbar>
   
