@@ -1,39 +1,39 @@
-<ion-header>
+<ion-header  [ngClass]="{darkMode: dark=== true}">
   <ion-toolbar class="ios hydrated">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title style="font-size: x-large;">Create Review</ion-title>
     <ion-buttons slot="end">
-      <ion-icon (click)="goHome()" style="color:rgb(0, 0, 0); zoom:2.0" name="home"></ion-icon>
+      <ion-icon (click)="goHome()" style="color:rgb(238, 210, 173); zoom:2.0" name="home"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content  [ngClass]="{darkMode: dark=== true}">
  
 <div *ngIf="canReview">
   <ion-list lines="full">
     <form [formGroup]="createForm" (ngSubmit)="formSubmit()">
       <ion-item >
-        <ion-select class= "bold"placeholder="Restaurants"formControlName="name">
+        <ion-select  [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"  class= "bold"placeholder="Restaurants"formControlName="name">
           <ion-item *ngFor="let item of restaurants">
-            <ion-select-option value={{item.name}}>{{item.name}}</ion-select-option>
+            <ion-select-option  [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" value={{item.name}}>{{item.name}}</ion-select-option>
           </ion-item>
         </ion-select>
-        <ion-input formControlName="name" type="text" required></ion-input>
+        <ion-input  [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" formControlName="name" type="text" required></ion-input>
       </ion-item>
 
       <ion-item>
         
-        <ion-input formControlName="review" placeholder="   My review" type="text" required>
+        <ion-input  [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" formControlName="review" placeholder="   My review" type="text" required>
         </ion-input>
       </ion-item>
 
       <ion-item >
-        <ion-range style="color: sandybrown;" formControlName="vote" min="0" max="10" >Rating
-              <ion-label  slot="start">0</ion-label>
-              <ion-label slot="end">10</ion-label>
+        <ion-range  [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="color: sandybrown;" formControlName="vote" min="0" max="10" >Rating
+              <ion-label  [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"  slot="start">0</ion-label>
+              <ion-label  [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" slot="end">10</ion-label>
         </ion-range>
         
        
@@ -47,8 +47,8 @@
     </form>
   </ion-list>
 </div>
-<div *ngIf="!canReview">
-  <p>You are in gueast Mode</p>
+<div *ngIf="!canReview" style="text-align: center;">
+  <p  [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}">You are in gueast Mode</p>
 </div>
   
   

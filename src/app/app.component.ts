@@ -13,6 +13,7 @@ import { DatabaseService } from './shared/database.service';
 })
 export class AppComponent {
   dark;
+  subscribe: any;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -32,6 +33,16 @@ export class AppComponent {
     });
   }
 
+  exitApp(){
+    this.subscribe = this.platform.backButton.subscribeWithPriority(666666,() =>{
+    
+        if(window.confirm("Do you want to exit app?")){
+          navigator["app"].exitApp();
+        }
+      
+    })
+
+  }
   initializeApp() {
       this.platform.ready().then(() => {
 

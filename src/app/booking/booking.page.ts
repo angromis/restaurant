@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from "@angular/router";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { first } from 'rxjs/operators';
+import { DatabaseService } from '../shared/database.service';
 
 @Component({
   selector: 'app-booking',
@@ -15,9 +16,16 @@ export class BookingPage implements OnInit {
   current:string ;
   searchTerm:any;
   id:any;
+  dark;
 
-  constructor(private actRoute: ActivatedRoute, public fb: FormBuilder,  public router: Router, private firestore: AngularFirestore ) {
+  constructor(private dataService: DatabaseService, private actRoute: ActivatedRoute, public fb: FormBuilder,  public router: Router, private firestore: AngularFirestore ) {
 
+    this.dataService.db.collection('settings').doc("daily").snapshotChanges().subscribe(res => {
+      let item: any = res.payload.data();
+      this.dark = item.dark;
+     
+     
+    })
    
 
    }

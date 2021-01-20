@@ -13,10 +13,18 @@ export class ReviewsPage implements OnInit {
   restaurants: string [];
   canReview: boolean = false;
 
+  dark;
   constructor( private rstService: DatabaseService,
     private router: Router,
     public fb: FormBuilder,
-    public authService: AuthenticationService) { }
+    public authService: AuthenticationService) { 
+      this.rstService.db.collection('settings').doc("daily").snapshotChanges().subscribe(res => {
+        let item: any = res.payload.data();
+        this.dark = item.dark;
+       
+       
+      })
+    }
 
   ngOnInit() {
     if(this.authService.getUser()===undefined)

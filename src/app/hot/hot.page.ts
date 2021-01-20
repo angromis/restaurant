@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HotPage implements OnInit {
 
+  dark;
   slideOptions = {
   
     initialSlide: 1,
@@ -20,7 +21,14 @@ export class HotPage implements OnInit {
   };
   bestRestaurants:any;
   offers:string [];
-  constructor( public dataservice: DatabaseService, private router: Router) { }
+  constructor( public dataservice: DatabaseService, private router: Router) {
+    this.dataservice.db.collection('settings').doc("daily").snapshotChanges().subscribe(res => {
+      let item: any = res.payload.data();
+      this.dark = item.dark;
+     
+     
+    })
+   }
 
   ngOnInit() {
 

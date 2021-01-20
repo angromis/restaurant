@@ -22,6 +22,7 @@ import { Router } from '@angular/router';
 })
 export class MapPage implements OnInit {
 
+  dark;
   map: GoogleMap;
   address:string;
   restaurants: any ;
@@ -29,7 +30,12 @@ export class MapPage implements OnInit {
   constructor( public toastCtrl: ToastController, public dataservice: DatabaseService,
     private platform: Platform, private router: Router) { 
 
-     
+      this.dataservice.db.collection('settings').doc("daily").snapshotChanges().subscribe(res => {
+        let item: any = res.payload.data();
+        this.dark = item.dark;
+       
+       
+      })
       
   }
 

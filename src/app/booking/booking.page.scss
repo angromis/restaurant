@@ -1,29 +1,31 @@
-ion-header{
-    --ion-background-color:rgb(231, 252, 248);
-  --ion-text-color:rgb(238, 210, 173);;
+ion-header {
+  --ion-background-color: rgb(231, 252, 248);
+  --ion-text-color: rgb(238, 210, 173);
   text-align: center;
   font-style: italic;
-  
-  
-  text-shadow: 2px 2px 4px black;
-  }
-ion-content{
-    --ion-background-color:rgb(231, 252, 248);
-} 
 
-.bold{
-    font-weight: bold;
+  text-shadow: 2px 2px 4px black;
 }
-#submit{
-    --background:rgb(238, 210, 173);;
-    color: black;
+ion-content {
+  --ion-background-color: rgb(231, 252, 248);
 }
-.results{
-     color: brown;
-     font-size: xx-small;
+
+.bold {
+  font-weight: bold;
 }
-ion-footer{
-    text-align: center;
-    color: black;
-    background-color:rgb(231, 252, 248);
-  }
+#submit {
+  --background: rgb(238, 210, 173);
+  color: black;
+}
+.results {
+  color: brown;
+  font-size: xx-small;
+}
+ion-footer {
+  text-align: center;
+  color: black;
+  background-color: rgb(231, 252, 248);
+}
+.darkMode {
+  --ion-background-color: rgb(34, 1, 65);
+}

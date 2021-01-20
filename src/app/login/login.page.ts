@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 
 import { AuthenticationService } from "../shared/authentication.service";
+import { DatabaseService } from '../shared/database.service';
 
 
 @Component({
@@ -11,12 +12,20 @@ import { AuthenticationService } from "../shared/authentication.service";
 })
 
 export class LoginPage implements OnInit {
-
+dark;
 public tmp:boolean;
   constructor(
     public authService: AuthenticationService,
-    public router: Router 
-  ) {}
+    public router: Router,
+    private database: DatabaseService 
+  ) {
+    this.database.db.collection('settings').doc("daily").snapshotChanges().subscribe(res => {
+      let item: any = res.payload.data();
+      this.dark = item.dark;
+     
+     
+    })
+  }
 
   ngOnInit(
   ) {

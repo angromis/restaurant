@@ -1,16 +1,16 @@
-<ion-header>
+<ion-header [ngClass]="{darkMode: dark=== true}">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title style="font-size: x-large;">MAP</ion-title>
     <ion-buttons slot="end">
-      <ion-icon (click)="goHome()" style="color:rgb(0, 0, 0); zoom:2.0" name="home"></ion-icon>
+      <ion-icon (click)="goHome()" style="color:rgb(238, 210, 173); zoom:2.0" name="home"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content [ngClass]="{darkMode: dark=== true}" padding>
 
   <!-- <div>
     <p>Check Restaurants</p>
