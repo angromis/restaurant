@@ -12,11 +12,18 @@ export class TagsPage implements OnInit {
 
   id:any;
   restaurants: any [];
+  dark;
 
-
+  filterTerm: string;
   constructor(private actRoute: ActivatedRoute,
     private router: Router, public dataservice: DatabaseService) {
       this.id = this.actRoute.snapshot.paramMap.get('id');
+      this.dataservice.db.collection('settings').doc("daily").snapshotChanges().subscribe(res => {
+        let item: any = res.payload.data();
+        this.dark = item.dark;
+       
+       
+      })
       
      }
 

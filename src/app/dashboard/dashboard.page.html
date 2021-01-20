@@ -16,7 +16,6 @@
 <ion-content [ngClass]="{darkMode: dark=== true}" >
   <ion-grid  >
     <ion-row>
-      <ion-searchbar class="searchbar" type="text" debounce="500" (ionChange)="getItems($event)"></ion-searchbar>
      <ion-list *ngIf="isItemAvailable">
          <ion-item *ngFor="let item of items">{{ item }}</ion-item>
      </ion-list>

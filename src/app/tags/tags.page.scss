@@ -1,70 +1,74 @@
-ion-header{
-    --ion-background-color:rgb(207, 248, 240);
-    --ion-text-color:rgb(238, 210, 173);
-    text-align: center;
-    font-style: italic;
-    
-    
-    text-shadow: 2px 2px 4px black;
+ion-header {
+  --ion-background-color: rgb(231, 252, 248);
+  --ion-text-color: rgb(238, 210, 173);
+  text-align: center;
+  font-style: italic;
+
+  text-shadow: 2px 2px 4px black;
 }
 
-h1{
-    text-align: center;
+h1 {
+  text-align: center;
 }
-ion-content{
-    --ion-background-color:rgb(149, 228, 211);
-}
-
-p{
-    text-align: center;
-    margin-left: 25px;
-    margin-right: 25px;
+ion-content {
+  --ion-background-color: rgb(231, 252, 248);
 }
 
-ion-footer{
-    text-align: center;
-    color: black;
-    background-color: rgb(229, 238, 237)
-  }
-  #more {display: none;}
+p {
+  text-align: center;
+  margin-left: 25px;
+  margin-right: 25px;
+}
 
-  .labels{
-    color:black;
-    font-weight: bold;
-    font-size:20px;
-    font-family: Ranchers;
-    text-shadow:2px 2px 4px rgb(238, 210, 173);
-  }
-
-  #myBtn{
-    margin:auto;
-  display:block;
+ion-footer {
+  text-align: center;
   color: black;
-  font-size:12px;
+  background-color: rgb(229, 238, 237);
+}
+#more {
+  display: none;
+}
+
+.labels {
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: Ranchers;
+  text-shadow: 2px 2px 4px rgb(238, 210, 173);
+}
+
+#myBtn {
+  margin: auto;
+  display: block;
+  color: black;
+  font-size: 12px;
   border-radius: 30%;
   background-color: rgb(238, 210, 173);
- 
-  }
+}
 
-  #title{
-    color:black;
-    font-weight: bold;
-    font-family: Dancing Script;
-  }
+#title {
+  color: black;
+  font-weight: bold;
+  font-family: Dancing Script;
+}
 
-  #description{
+#description {
+  color: black;
+  font-size: 13px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+a:link,
+a:visited {
+  font-size: large;
+  color: rgb(238, 210, 173);
+  text-shadow: 2px 2px 4px black;
+}
 
-    color:black;
-    font-size:13px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-  }
-  a:link,a:visited{
-    font-size: large;
-    color: rgb(238, 210, 173);
-    text-shadow: 2px 2px 4px black;
-  }
+.booking {
+  color: black;
+  --background: rgb(238, 210, 173);
+}
 
-  .booking{
-    color:black;
-    --background:rgb(238, 210, 173);
-  }
+.darkMode {
+  --ion-background-color: rgb(34, 1, 65);
+}

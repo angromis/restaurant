@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { IonSlides } from '@ionic/angular'
 import { Platform } from '@ionic/angular';
 import { DatabaseService } from '../shared/database.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
