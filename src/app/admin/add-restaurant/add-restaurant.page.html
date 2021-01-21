@@ -1,16 +1,25 @@
 <ion-header [ngClass]="{darkMode: dark=== true}" >
   <ion-toolbar>
+    <ion-back-button [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" slot="start"></ion-back-button>
     <ion-buttons slot="start">
       <ion-menu-button [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" menu="main-menu"> </ion-menu-button>
     </ion-buttons>
      
     <ion-title [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="font-size: medium;">Add Restaurant</ion-title>
-   
+    <ion-buttons slot="end">
+      <ion-icon (click)="goHome()" style="color:rgb(238, 210, 173); zoom:2.0" name="home"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
   
 </ion-header>
 
 <ion-content  [ngClass]="{darkMode: dark=== true}">
+  <ion-list lines='full'>
+    <form [formGroup]="addForm" (ngSubmit)="formSubmit()">
+  
+    </form>
+  </ion-list >
+  
 
 </ion-content>
 <ion-footer >@Copyright agromis</ion-footer>

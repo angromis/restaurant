@@ -1,9 +1,18 @@
-<ion-header>
+<ion-header [ngClass]="{darkMode: dark=== true}" >
   <ion-toolbar>
-    <ion-title>edit-restaurant</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" menu="main-menu"> </ion-menu-button>
+    </ion-buttons>
+     
+    <ion-title [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="font-size: medium;">Edit Restaurant</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon (click)="goHome()" style="color:rgb(238, 210, 173); zoom:2.0" name="home"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
+  
 </ion-header>
 
-<ion-content>
+<ion-content  [ngClass]="{darkMode: dark=== true}">
 
 </ion-content>
+<ion-footer >@Copyright agromis</ion-footer>

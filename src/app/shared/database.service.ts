@@ -242,6 +242,8 @@ return firebase.firestore().collection('reviews').doc().set({name: name, review:
     return this.db.collection('settings').doc("daily").set({hours: hours, minutes: minutes, dark: dark});
   }
 
+addRestaurant(res: any){
 
+}
  
 }

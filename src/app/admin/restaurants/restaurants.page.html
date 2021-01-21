@@ -1,0 +1,49 @@
+<ion-header [ngClass]="{darkMode: dark=== true}" >
+  <ion-toolbar>
+   
+    <ion-buttons slot="start">
+      <ion-menu-button [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" menu="main-menu"> </ion-menu-button>
+    </ion-buttons>
+     
+    <ion-title [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="font-size: medium;">Restaurants</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon (click)="goHome()" style="color:rgb(238, 210, 173); zoom:2.0" name="home"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content style="text-align: center;"  [ngClass]="{darkMode: dark=== true}">
+
+  <ion-grid>
+    <ion-row>
+     <ion-col></ion-col>
+      <ion-col>
+        <ion-button [routerLink]="['/add-restaurant']" [ngClass]="{darkButton: dark=== true}"><ion-icon [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="zoom:2.0" name="add"></ion-icon></ion-button>
+      </ion-col>
+      <ion-col></ion-col>
+
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item *ngFor="let restaurant of restaurants">
+        
+          <ion-avatar>
+            <ion-img [src]="restaurant.photo"></ion-img>
+          </ion-avatar>
+          <ion-text [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}">
+           {{restaurant.name}}
+          </ion-text>
+          <ion-button [ngClass]="{darkButton: dark=== true}"  slot="end">
+            <ion-icon [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="zoom:1.5" name="create"></ion-icon>
+          </ion-button>
+          <ion-button [ngClass]="{darkButton: dark=== true}"  slot="end">
+            <ion-icon [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="zoom:1.5" name="trash"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+<ion-footer >@Copyright agromis</ion-footer>

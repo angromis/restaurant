@@ -66,6 +66,10 @@ const routes: Routes = [
     path: 'edit-restaurant',
     loadChildren: () => import('./admin/edit-restaurant/edit-restaurant.module').then( m => m.EditRestaurantPageModule)
   },
+  {
+    path: 'restaurants',
+    loadChildren: () => import('./admin/restaurants/restaurants.module').then( m => m.RestaurantsPageModule)
+  },
 
 
  

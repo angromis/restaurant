@@ -103,7 +103,7 @@ console.log(this.userlogedin)
     
   }
   addRestaurant(){
-    this.router.navigate(['/add-restaurant']);
+    this.router.navigate(['/restaurants']);
   }
 
   
