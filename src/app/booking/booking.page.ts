@@ -53,10 +53,10 @@ export class BookingPage implements OnInit {
   }
   getDisableInput(){
     if (this.id === " "){
-      return false;
+      return true;
     }
     else{
-      return true;
+      return false;
     }
   }
 
@@ -68,7 +68,7 @@ export class BookingPage implements OnInit {
   }
   getCurrent(myname: string){
     this.current = myname
-    
+    this.foodList = [];
    
   }
 

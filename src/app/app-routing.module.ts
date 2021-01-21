@@ -58,6 +58,14 @@ const routes: Routes = [
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   },
+  {
+    path: 'add-restaurant',
+    loadChildren: () => import('./admin/add-restaurant/add-restaurant.module').then( m => m.AddRestaurantPageModule)
+  },
+  {
+    path: 'edit-restaurant',
+    loadChildren: () => import('./admin/edit-restaurant/edit-restaurant.module').then( m => m.EditRestaurantPageModule)
+  },
 
 
  

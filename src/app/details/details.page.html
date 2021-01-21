@@ -26,9 +26,9 @@
       <br>
     <h4 [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" for="item.cousine">Cousine: </h4>
     <p >
-      <a (click)="getDetailedTag(item.cousine[0])">{{item.cousine[0]}},</a> 
-      <a (click)="getDetailedTag(item.cousine[1])"> {{item.cousine[1]}},</a>
-      <a (click)="getDetailedTag(item.cousine[2])"> {{item.cousine[2]}}</a>
+      <a [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" (click)="getDetailedTag(item.cousine[0])">{{item.cousine[0]}},</a> 
+      <a [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" (click)="getDetailedTag(item.cousine[1])"> {{item.cousine[1]}},</a>
+      <a [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" (click)="getDetailedTag(item.cousine[2])"> {{item.cousine[2]}}</a>
     </p>
     
   
@@ -137,7 +137,7 @@
     <br>
     <h4 [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" for="item.site">Go to site: </h4>
     <ion-text>
-      <a  href="{{item.site}}">{{item.site}}</a>
+      <a [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"  href="{{item.site}}">{{item.site}}</a>
     </ion-text>
     
     <br>

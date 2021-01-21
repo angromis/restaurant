@@ -30,7 +30,7 @@ export class DashboardPage implements OnInit {
    isItemAvailable = false;
    items = [];
    dark;
-
+isAdmin:boolean = false;
 
   constructor(
     public dataService: DatabaseService,
@@ -52,11 +52,13 @@ export class DashboardPage implements OnInit {
 
   ngOnInit(){
     this.userlogedin = this.authService.getUser();
-
+console.log(this.userlogedin)
     if(this.userlogedin===undefined){
       this.userName = 'Guest';
     }else{
       this.userName = this.userlogedin.displayName;
+      if(this.userlogedin.email ==='andregromis@gmail.com')
+        this.isAdmin = true;
     }
    console.log(this.userlogedin);
 
@@ -98,9 +100,10 @@ export class DashboardPage implements OnInit {
       
      
     });   
-       
     
-    
+  }
+  addRestaurant(){
+    this.router.navigate(['/add-restaurant']);
   }
 
   
