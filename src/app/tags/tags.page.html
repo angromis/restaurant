@@ -13,13 +13,13 @@
 <ion-content [ngClass]="{darkMode: dark=== true}">
   <h1 [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" id="title" >{{id}} <ion-badge color="primary">{{restaurants.length}}</ion-badge></h1>
   <p [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}">Check more restaurants with the tag name "{{id}}" </p>
-  <ion-searchbar [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" placeholder="Search..." [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
+  <ion-searchbar (ionChange)="searchChange($event)" [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" placeholder="Search..." [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
 
   <br>
 
  
 
-    <ion-item *ngFor="let restaurant of restaurants | filter:(filterTerm)"(click)="getDetailedRestaurant(restaurant.id)">
+    <ion-item *ngFor="let restaurant of restaurants"(click)="getDetailedRestaurant(restaurant.id)">
       
       <ion-avatar>
         <ion-img src="{{restaurant.photo}}"   width="100" height="100" alt="{{restaurant.name}}"></ion-img>

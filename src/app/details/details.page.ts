@@ -52,6 +52,7 @@ export class DetailsPage implements OnInit {
     });
    
   }
+  
   goHome(){
     this.router.navigate(['/dashboard']); 
   }

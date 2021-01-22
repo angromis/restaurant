@@ -95,10 +95,7 @@ return firebase.firestore().collection('reviews').doc().set({name: name, review:
        
      return restaurants; 
   }
-  fetchSearchResults(){
-
-
-
+  fetchSearchResults(filter:string, upper:string){
     let restaurants = [];
 
     this.db.collection('restaurant').snapshotChanges().subscribe( res => {
@@ -108,21 +105,10 @@ return firebase.firestore().collection('reviews').doc().set({name: name, review:
 
         let item:any = a.payload.doc.data();
         item.id = a.payload.doc.id;
-
-       
-
-          restaurants.push(item.name);
-          restaurants.push(item.cousine[0]);
-          restaurants.push(item.cousine[1]);
-          restaurants.push(item.cousine[2]);
-          restaurants.push(item.phone);
-          restaurants.push(item.site);
-
-
+        if(item.name.includes(filter) || item.name.includes(upper)){
+          restaurants.push(item)
          
-    
-        
-        
+        }
 
       });
       

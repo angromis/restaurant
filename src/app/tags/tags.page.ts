@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
+import { exitCode } from 'process';
 
 import { DatabaseService} from "../shared/database.service";
 
@@ -34,13 +35,7 @@ export class TagsPage implements OnInit {
   findRestaurants(tagName: string){
 
     
-    this.restaurants = this.dataservice.fetchTagRestaurants(tagName);
-
-   
-    
-
-    
-      
+    this.restaurants = this.dataservice.fetchTagRestaurants(tagName); 
     
   }
   getDetailedRestaurant(id: string){
@@ -49,6 +44,11 @@ export class TagsPage implements OnInit {
   }
   goHome(){
     this.router.navigate(['/dashboard']); 
+  }
+  searchChange(evt){
+    let upper = evt.detail.value.charAt(0).toUpperCase() + evt.detail.value.slice(1);
+   this.restaurants = this.dataservice.fetchSearchResults(evt.detail.value, upper)
+
   }
 
 }

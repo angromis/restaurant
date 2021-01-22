@@ -1,30 +1,30 @@
 ion-content {
-    --ion-background-color: rgb(231, 252, 248);
-  }
-  ion-header{
-    --ion-background-color: rgb(231, 252, 248);
-  }
+  --ion-background-color: rgb(231, 252, 248);
+}
+ion-header {
+  --ion-background-color: rgb(231, 252, 248);
+}
 
-  .darkclass {
-    --ion-background-color:rgb(34, 1, 65);
-  }
-  
-  .openBack {
-    background-color: rgb(231, 252, 248);
-  }
-  
-  .darkBack {
-    background-color:rgb(73, 44, 73);
-  }
-  ion-toggle{
-    --background-checked: #ffffff;
-    --handle-background: rgb(34, 1, 65);
-    --handle-background-checked: rgb(255, 255, 255);
-  }
-  .darkBtn{
-    --background:rgb(238, 210, 173);
-    --color: black;
-  }
-  .openBtn{
-    --background: rgb(34, 1, 65);
-  }
+.darkclass {
+  --ion-background-color: rgb(34, 1, 65);
+}
+
+.openBack {
+  background-color: rgb(231, 252, 248);
+}
+
+.darkBack {
+  background-color: rgb(73, 44, 73);
+}
+ion-toggle {
+  --background-checked: rgb(238, 210, 173);
+  --handle-background: rgb(34, 1, 65);
+  --handle-background-checked: rgb(238, 210, 173);
+}
+.darkBtn {
+  --background: rgb(238, 210, 173);
+  --color: black;
+}
+.openBtn {
+  --background: rgb(34, 1, 65);
+}

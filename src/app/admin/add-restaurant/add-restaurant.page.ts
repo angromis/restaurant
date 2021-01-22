@@ -41,12 +41,12 @@ export class AddRestaurantPage implements OnInit {
     }
     else{
      
-      this.database.addRestaurant(this.addForm.value).then(res => {
-        this.addForm.reset();
-        this.router.navigate(['/deadlines']) ;
+      // this.database.addRestaurant(this.addForm.value).then(res => {
+      //   this.addForm.reset();
+      //   this.router.navigate(['/deadlines']) ;
          
-      })
-        .catch(err => console.log(err));
+      // })
+      //   .catch(err => console.log(err));
 
       
     }
