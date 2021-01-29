@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AddRestaurantPageRoutingModule } from './add-restaurant-routing.module';
 
 import { AddRestaurantPage } from './add-restaurant.page';
+import { FormatSizePipe } from './format-size.pipe';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { AddRestaurantPage } from './add-restaurant.page';
     IonicModule,
     AddRestaurantPageRoutingModule
   ],
-  declarations: [AddRestaurantPage]
+  declarations: [AddRestaurantPage, FormatSizePipe]
 })
 export class AddRestaurantPageModule {}

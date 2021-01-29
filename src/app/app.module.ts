@@ -15,11 +15,21 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [AngularFireAuthModule, AngularFireModule.initializeApp(environment.firebaseConfig),AngularFireDatabaseModule,AngularFirestoreModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+     AngularFireAuthModule,
+     AngularFireModule.initializeApp(environment.firebaseConfig),
+     AngularFireDatabaseModule,
+     AngularFirestoreModule, 
+     BrowserModule, 
+     IonicModule.forRoot(),
+     AppRoutingModule,
+     AngularFireStorageModule
+    ],
   providers: [
     StatusBar,
     SplashScreen,

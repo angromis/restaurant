@@ -24,26 +24,32 @@
       <ion-col></ion-col>
 
     </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item *ngFor="let restaurant of restaurants">
-        
-          <ion-avatar>
-            <ion-img [src]="restaurant.photo"></ion-img>
-          </ion-avatar>
-          <ion-text [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}">
-           {{restaurant.name}}
-          </ion-text>
-          <ion-button [ngClass]="{darkButton: dark=== true}"  slot="end">
-            <ion-icon [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="zoom:1.5" name="create"></ion-icon>
-          </ion-button>
-          <ion-button [ngClass]="{darkButton: dark=== true}"  slot="end">
-            <ion-icon [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="zoom:1.5" name="trash"></ion-icon>
-          </ion-button>
-        </ion-item>
-      </ion-col>
-    </ion-row>
   </ion-grid>
+   <ion-list >
+     <ion-item-sliding *ngFor="let restaurant of restaurants">
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-img [src]="restaurant.photo"></ion-img>
+        </ion-avatar>
+        <ion-text [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}">
+         {{restaurant.name}}
+        </ion-text>
+       
+      </ion-item>
+      <ion-item-options>
+        <ion-item-option color="danger" (click)="onDelete(restaurant.id)" slot="start">
+          <ion-icon style="zoom:1.5" name="trash"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="secondary" (click)="onEdit(restaurant.id)" slot="end">
+          <ion-icon style="zoom:1.5" name="create"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+     </ion-item-sliding>
+   
+   </ion-list>
+        
+      
+  
 
 </ion-content>
 <ion-footer >@Copyright agromis</ion-footer>

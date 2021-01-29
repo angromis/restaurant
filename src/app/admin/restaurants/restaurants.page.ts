@@ -27,4 +27,10 @@ export class RestaurantsPage implements OnInit {
   goHome(){
     this.router.navigate(['/dashboard']); 
   }
+  onDelete(id: string){
+    console.log(id);
+  }
+  onEdit(id: string){
+    console.log(id);
+  }
 }
