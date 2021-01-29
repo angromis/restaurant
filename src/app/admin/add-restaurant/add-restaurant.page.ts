@@ -108,6 +108,7 @@ export class AddRestaurantPage implements OnInit {
       
     const file = event.item(0)
 
+    
     // Image validation
     if (file.type.split('/')[0] !== 'image') { 
       console.log('File type is not supported!')
@@ -124,7 +125,8 @@ export class AddRestaurantPage implements OnInit {
 
     // Image reference
     const imageRef = this.afStorage.ref(fileStoragePath);
-
+    console.log("imageref "+imageRef)
+    console.log("path "+fileStoragePath)
     // File upload task
     this.fileUploadTask = this.afStorage.upload(fileStoragePath, file);
 
@@ -137,7 +139,7 @@ export class AddRestaurantPage implements OnInit {
         this.UploadedImageURL = imageRef.getDownloadURL();
         
         this.UploadedImageURL.subscribe(resp=>{
-          console.log(resp)
+         
           this.storeFilesFirebase({
             name: file.name,
             filepath: resp,
@@ -158,7 +160,7 @@ export class AddRestaurantPage implements OnInit {
 
 storeFilesFirebase(image: imgFile) {
     const fileId = this.afs.createId();
-    
+    console.log("image")
     this.filesCollection.doc(fileId).set(image).then(res => {
       console.log(res);
     }).catch(err => {

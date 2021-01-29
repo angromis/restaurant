@@ -33,4 +33,8 @@ export class RestaurantsPage implements OnInit {
   onEdit(id: string){
     console.log(id);
   }
+  getDetailedRestaurant(id: string){
+    
+    this.router.navigate(['/details/',id]);
+  }
 }

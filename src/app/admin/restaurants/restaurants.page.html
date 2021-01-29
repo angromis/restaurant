@@ -26,7 +26,7 @@
     </ion-row>
   </ion-grid>
    <ion-list >
-     <ion-item-sliding *ngFor="let restaurant of restaurants">
+     <ion-item-sliding *ngFor="let restaurant of restaurants" (click)="getDetailedRestaurant(restaurant.id)">
       <ion-item>
         <ion-avatar slot="start">
           <ion-img [src]="restaurant.photo"></ion-img>
