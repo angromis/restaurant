@@ -22,8 +22,10 @@
       </ion-card-header>
       <ion-card-content>
         <ion-button color="primary" shape="round" size="medium">
-          <input type="file" (change)="uploadImage($event.target.files)" />
+          <input type="file" (change)="selectImage($event.target.files)" />
         </ion-button>
+        <ion-img [src]=file></ion-img>
+        <ion-button (click)="uploadImage()">upload</ion-button>
       </ion-card-content>
     </ion-card>
 

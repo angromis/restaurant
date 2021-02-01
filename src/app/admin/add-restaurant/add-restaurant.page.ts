@@ -20,6 +20,8 @@ export interface imgFile {
 })
 export class AddRestaurantPage implements OnInit {
 
+  file;
+  imageRef;
   dark;
   addForm: FormGroup;
 
@@ -104,57 +106,61 @@ export class AddRestaurantPage implements OnInit {
   }
 
 
-  uploadImage(event: FileList) {
+  selectImage(event: FileList) {
       
-    const file = event.item(0)
+    this.file = event.item(0)
 
-    
+    console.log(event)
     // Image validation
-    if (file.type.split('/')[0] !== 'image') { 
+    if (this.file.type.split('/')[0] !== 'image') { 
       console.log('File type is not supported!')
       return;
     }
 
-    this.isFileUploading = true;
+    
+   
+}
+uploadImage(){
+  this.isFileUploading = true;
     this.isFileUploaded = false;
 
-    this.imgName = file.name;
+    this.imgName = this.file.name;
 
     // Storage path
-    const fileStoragePath = `filesStorage/${new Date().getTime()}_${file.name}`;
+    const fileStoragePath = `filesStorage/${new Date().getTime()}_${this.file.name}`;
 
     // Image reference
-    const imageRef = this.afStorage.ref(fileStoragePath);
-    console.log("imageref "+imageRef)
+    this.imageRef = this.afStorage.ref(fileStoragePath);
+    console.log("imageref "+this.imageRef)
     console.log("path "+fileStoragePath)
     // File upload task
-    this.fileUploadTask = this.afStorage.upload(fileStoragePath, file);
+    this.fileUploadTask = this.afStorage.upload(fileStoragePath, this.file);
 
     // Show uploading progress
     this.percentageVal = this.fileUploadTask.percentageChanges();
-    this.trackSnapshot = this.fileUploadTask.snapshotChanges().pipe(
+  this.trackSnapshot = this.fileUploadTask.snapshotChanges().pipe(
       
-      finalize(() => {
-        // Retreive uploaded image storage path
-        this.UploadedImageURL = imageRef.getDownloadURL();
-        
-        this.UploadedImageURL.subscribe(resp=>{
-         
-          this.storeFilesFirebase({
-            name: file.name,
-            filepath: resp,
-            size: this.imgSize
-          });
-          this.isFileUploading = false;
-          this.isFileUploaded = true;
-        },error=>{
-          console.log(error);
-        })
-      }),
-      tap(snap => {
-          this.imgSize = snap.totalBytes;
+    finalize(() => {
+      // Retreive uploaded image storage path
+      this.UploadedImageURL = this.imageRef.getDownloadURL();
+      
+      this.UploadedImageURL.subscribe(resp=>{
+       
+        this.storeFilesFirebase({
+          name: this.file.name,
+          filepath: resp,
+          size: this.imgSize
+        });
+        this.isFileUploading = false;
+        this.isFileUploaded = true;
+      },error=>{
+        console.log(error);
       })
-    )
+    }),
+    tap(snap => {
+        this.imgSize = snap.totalBytes;
+    })
+  )
 }
 
 
