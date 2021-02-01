@@ -23,7 +23,7 @@ export class AddRestaurantPage implements OnInit {
   file;
   imageRef;
   dark;
-  addForm: FormGroup;
+  addRestaurantForm: FormGroup;
 
     // File upload task 
     fileUploadTask: AngularFireUploadTask;
@@ -72,27 +72,27 @@ export class AddRestaurantPage implements OnInit {
   }
 
   ngOnInit() {
-    this.addForm = this.formbuild.group({
-
+    this.addRestaurantForm = this.formbuild.group({
+      name:[''],
+      address:[''],
+      description:[''],
+      phone:[''],
+      site:['']
     });
   }
   formSubmit(){
    
 
-    // this.addDeadlineForm.value.created = new Date().toDateString();
-    // this.addDeadlineForm.value.tags = this.deadlineTaglist;
-    // this.addDeadlineForm.value.list = this.list1;
-    // this.addDeadlineForm.value.type = "deadline";
-    // this.addDeadlineForm.value.done = false;
+    
    
     
-    if(!this.addForm.valid){
+    if(!this.addRestaurantForm.valid){
       return false;
     }
     else{
      
-      // this.database.addRestaurant(this.addForm.value).then(res => {
-      //   this.addForm.reset();
+      // this.database.addRestaurant(this.addRestaurantForm.value).then(res => {
+      //   this.addRestaurantForm.reset();
       //   this.router.navigate(['/deadlines']) ;
          
       // })
