@@ -20,6 +20,8 @@ export interface imgFile {
 })
 export class AddRestaurantPage implements OnInit {
 
+  tagList;
+  eventTaglist = [];
   file;
   imageRef;
   dark;
@@ -43,7 +45,7 @@ export class AddRestaurantPage implements OnInit {
     // Image specifications
     imgName: string;
     imgSize: number;
-  
+    downloadableURL = '';  
     // File uploading status
     isFileUploading: boolean;
     isFileUploaded: boolean;
@@ -56,6 +58,7 @@ export class AddRestaurantPage implements OnInit {
      private afs: AngularFirestore,
     private afStorage: AngularFireStorage
     ) { 
+      this.tagList = this.database.getTags();
     this.database.db.collection('settings').doc("daily").snapshotChanges().subscribe(res => {
       let item: any = res.payload.data();
       this.dark = item.dark;
@@ -79,6 +82,16 @@ export class AddRestaurantPage implements OnInit {
       phone:[''],
       site:['']
     });
+  }
+  checkBoxes(tag:string){
+    console.log(tag)
+    if(this.eventTaglist.includes(tag))
+    this.eventTaglist.forEach((value,index)=>{
+      if(value==tag) this.eventTaglist.splice(index,1);
+  });
+  else{
+    this.eventTaglist.push(tag);
+  }
   }
   formSubmit(){
    
@@ -110,7 +123,7 @@ export class AddRestaurantPage implements OnInit {
       
     this.file = event.item(0)
 
-    console.log(event)
+    console.log(this.file)
     // Image validation
     if (this.file.type.split('/')[0] !== 'image') { 
       console.log('File type is not supported!')
@@ -120,57 +133,29 @@ export class AddRestaurantPage implements OnInit {
     
    
 }
-uploadImage(){
+async uploadImage(){
   this.isFileUploading = true;
     this.isFileUploaded = false;
 
     this.imgName = this.file.name;
 
     // Storage path
-    const fileStoragePath = `filesStorage/${new Date().getTime()}_${this.file.name}`;
+    const fileStoragePath = `${this.file.name}`;
 
     // Image reference
     this.imageRef = this.afStorage.ref(fileStoragePath);
-    console.log("imageref "+this.imageRef)
-    console.log("path "+fileStoragePath)
+    console.log(this.isFileUploading)
+    console.log(this.isFileUploaded)
     // File upload task
     this.fileUploadTask = this.afStorage.upload(fileStoragePath, this.file);
-
+console.log(this.fileUploadTask.task)
     // Show uploading progress
     this.percentageVal = this.fileUploadTask.percentageChanges();
-  this.trackSnapshot = this.fileUploadTask.snapshotChanges().pipe(
-      
-    finalize(() => {
-      // Retreive uploaded image storage path
-      this.UploadedImageURL = this.imageRef.getDownloadURL();
-      
-      this.UploadedImageURL.subscribe(resp=>{
-       
-        this.storeFilesFirebase({
-          name: this.file.name,
-          filepath: resp,
-          size: this.imgSize
-        });
-        this.isFileUploading = false;
-        this.isFileUploaded = true;
-      },error=>{
-        console.log(error);
-      })
-    }),
-    tap(snap => {
-        this.imgSize = snap.totalBytes;
-    })
-  )
+    (await this.fileUploadTask).ref.getDownloadURL().then(url => {this.downloadableURL = url; });  
+    
+  
 }
 
 
-storeFilesFirebase(image: imgFile) {
-    const fileId = this.afs.createId();
-    console.log("image")
-    this.filesCollection.doc(fileId).set(image).then(res => {
-      console.log(res);
-    }).catch(err => {
-      console.log(err);
-    });
-}
+
 }

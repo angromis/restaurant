@@ -141,10 +141,11 @@
     </ion-text>
     
     <br>
-    <h4 [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" for="item.location">Location: </h4>
+    <h4 [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" for="item.address">Address: </h4>
     <ion-button [ngClass]="{mapDark: dark=== true, mapLight:dark===false}" [routerLink]="['/map']"  class="map"><ion-icon
         [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"  style="zoom: 1.5;" name="navigate-outline"></ion-icon></ion-button>
-    <p [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}">{{item.location.latitude}}</p>
+        <p [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"> {{item.address}}</p>
+    <!-- <p [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}">{{item.location.latitude}}</p> -->
 
   
     <br>

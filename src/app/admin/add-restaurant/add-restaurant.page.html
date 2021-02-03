@@ -25,7 +25,7 @@
     
       <ion-item>
         <ion-label [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"   style="font-size: large;" position="floating">Description</ion-label>
-        <ion-input type="textarea" formControlName="description"></ion-input>
+        <ion-textarea type="textarea" formControlName="description"></ion-textarea>
       </ion-item>
       <ion-item>
         <ion-label [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"   style="font-size: large;" position="floating">Address</ion-label>
@@ -37,14 +37,30 @@
       </ion-item>
       <ion-item>
         <ion-label [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"   style="font-size: large;" position="floating">Site</ion-label>
-        <ion-input [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"  type="text" formControlName="site"></ion-input>
+        <ion-input [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"  type="url" formControlName="site"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"   style="font-size: large;" position="floating">Address</ion-label>
         <ion-input [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"  type="text" formControlName="address"></ion-input>
       </ion-item>
       </form>
+      <ion-row>
+        <div *ngFor="let tag of tagList">
+          <ion-chip (click)="checkBoxes(tag)"  outline color="tertiary"><ion-label>{{tag}}</ion-label>
+            <div *ngFor="let cur of eventTaglist">
+              <div *ngIf="tag === cur">
+    
+                <!-- <ion-chip style="background-color: {{tag.color}};" (click)="checkBoxes(tag.name)" outline color="tertiary"><ion-label>{{tag.name}}</ion-label> -->
+                  <ion-icon name="close-circle"></ion-icon>
+              
+               
+                
+              </div>
+              </div></ion-chip>
+        </div>
+      </ion-row>
     </ion-list>
+    
 
     <ion-card class="ion-text-center" *ngIf="!isUploading && !isUploaded">
       <ion-card-header>
@@ -54,10 +70,20 @@
         <ion-button color="primary" shape="round" size="medium">
           <input type="file" (change)="selectImage($event.target.files)" />
         </ion-button>
-        <ion-img [src]=file></ion-img>
+        <div *ngIf="file">
+          <ion-avatar>
+            <ion-img [src]="downloadableURL"></ion-img>
+          </ion-avatar>
+
+        </div>
+       
         <ion-button (click)="uploadImage()">upload</ion-button>
+        
+         
+        
       </ion-card-content>
     </ion-card>
+    
 
   </div>
   

@@ -30,6 +30,10 @@ export class DatabaseService {
   geoAccuracy:number;
   geoAddress: string;
 
+  tags: string[] = ['Μεσογειακή', 'Ευρωπαϊκή', 'Ελληνική', 'Σύγχρονη', 'Vegeterian',
+   'Σούσι', 'Πρωινό', 'Μεζεδοπωλείο', 'Ιταλική', 'Πίτσα', 'Θαλασσινά', 'Διεθνής',
+    'Αμερικανική', 'Barbeque', 'Μπαρ', 'Καφέ', 'Vegan',
+     'Γαλλική', 'Γκριλ',' Ψητοπωλείο', 'Wine bar']
   
   constructor(public db: AngularFirestore, private db2: AngularFireDatabase
    ) {
@@ -68,6 +72,9 @@ return firebase.firestore().collection('reviews').doc().set({name: name, review:
        
      return restaurants;     
 
+  }
+  getTags(){
+    return this.tags;
   }
   fetchBestRestaurants(){
 
