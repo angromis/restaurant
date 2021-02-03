@@ -8,6 +8,7 @@ import { Observable,  } from 'rxjs';
 import { map, retryWhen } from  'rxjs/operators';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
+import { Restaurant } from './Restaurant';
 //import { NativeGeocoder,  NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 
 
@@ -235,7 +236,18 @@ return firebase.firestore().collection('reviews').doc().set({name: name, review:
     return this.db.collection('settings').doc("daily").set({hours: hours, minutes: minutes, dark: dark});
   }
 
-addRestaurant(res: any){
+addRestaurant(res: Restaurant){
+  let name = res.name;
+    let description = res.description;
+    let photo = res.photo;
+    let phone = res.phone;
+    let address = res.address;
+    let cousine = res.cousine;
+    let site = res.site;
+    let rating =5;
+   console.log(res)
+     return this.db.collection('restaurant').doc(name).set({name: name, description:description, photo: photo,
+        phone: phone, address: address, cousine: cousine, site: site,rating: rating});
 
 }
  

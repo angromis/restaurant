@@ -94,22 +94,25 @@ export class AddRestaurantPage implements OnInit {
   }
   }
   formSubmit(){
-   
+    this.addRestaurantForm.value.cousine = this.eventTaglist;
+    this.addRestaurantForm.value.photo = this.downloadableURL;
+
 
     
-   
+   console.log(this.addRestaurantForm)
     
     if(!this.addRestaurantForm.valid){
       return false;
     }
     else{
      
-      // this.database.addRestaurant(this.addRestaurantForm.value).then(res => {
-      //   this.addRestaurantForm.reset();
-      //   this.router.navigate(['/deadlines']) ;
+      this.database.addRestaurant(this.addRestaurantForm.value).then(res => {
+        this.addRestaurantForm.reset();
+
+        
          
-      // })
-      //   .catch(err => console.log(err));
+      })
+        .catch(err => console.log(err));
 
       
     }
