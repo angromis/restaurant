@@ -1,7 +1,7 @@
 <ion-header [ngClass]="{darkMode: dark=== true}">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="dashboard"  [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" slot="start"></ion-back-button>
     </ion-buttons>
     <ion-title style="font-size: x-large;">
       <ion-icon style="color: rgb(226, 107, 107);" name="flame"></ion-icon>

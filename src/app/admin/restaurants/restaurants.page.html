@@ -1,9 +1,8 @@
 <ion-header [ngClass]="{darkMode: dark=== true}" >
   <ion-toolbar>
+    <ion-back-button defaultHref="dashboard"  [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" slot="start"></ion-back-button>
+
    
-    <ion-buttons slot="start">
-      <ion-menu-button [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" menu="main-menu"> </ion-menu-button>
-    </ion-buttons>
      
     <ion-title [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="font-size: medium;">Restaurants</ion-title>
     <ion-buttons slot="end">
@@ -26,8 +25,8 @@
     </ion-row>
   </ion-grid>
    <ion-list >
-     <ion-item-sliding *ngFor="let restaurant of restaurants" (click)="getDetailedRestaurant(restaurant.id)">
-      <ion-item>
+     <ion-item-sliding *ngFor="let restaurant of restaurants" >
+      <ion-item (click)="getDetailedRestaurant(restaurant.id)">
         <ion-avatar slot="start">
           <ion-img [src]="restaurant.photo"></ion-img>
         </ion-avatar>
@@ -37,10 +36,10 @@
        
       </ion-item>
       <ion-item-options>
-        <ion-item-option color="danger" (click)="onDelete(restaurant.id)" slot="start">
+        <ion-item-option color="danger" (click)="onDelete(restaurant.id, restaurant.photo)" slot="start">
           <ion-icon style="zoom:1.5" name="trash"></ion-icon>
         </ion-item-option>
-        <ion-item-option color="secondary" (click)="onEdit(restaurant.id)" slot="end">
+        <ion-item-option color="secondary" [routerLink]="['/edit-restaurant', restaurant.id]" slot="end">
           <ion-icon style="zoom:1.5" name="create"></ion-icon>
         </ion-item-option>
       </ion-item-options>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { DatabaseService } from 'src/app/shared/database.service';
 
@@ -11,7 +12,7 @@ export class RestaurantsPage implements OnInit {
 
   dark;
   restaurants: any [];
-  constructor(private database: DatabaseService, private router: Router) { 
+  constructor(private database: DatabaseService, private router: Router, private afStorage: AngularFireStorage) { 
     this.database.db.collection('settings').doc("daily").snapshotChanges().subscribe(res => {
       let item: any = res.payload.data();
       this.dark = item.dark;
@@ -27,8 +28,12 @@ export class RestaurantsPage implements OnInit {
   goHome(){
     this.router.navigate(['/dashboard']); 
   }
-  onDelete(id: string){
-    console.log(id);
+  onDelete(id: string,url:string){
+    if (window.confirm('Do you really want to delete?')) {
+      this.afStorage.storage.refFromURL(url).delete()
+      this.database.deleteRestaurant(id);
+      this.router.navigate(['/restaurants']);
+    }
   }
   onEdit(id: string){
     console.log(id);

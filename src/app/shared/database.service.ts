@@ -34,7 +34,7 @@ export class DatabaseService {
   tags: string[] = ['Μεσογειακή', 'Ευρωπαϊκή', 'Ελληνική', 'Σύγχρονη', 'Vegeterian',
    'Σούσι', 'Πρωινό', 'Μεζεδοπωλείο', 'Ιταλική', 'Πίτσα', 'Θαλασσινά', 'Διεθνής',
     'Αμερικανική', 'Barbeque', 'Μπαρ', 'Καφέ', 'Vegan',
-     'Γαλλική', 'Γκριλ',' Ψητοπωλείο', 'Wine bar']
+     'Γαλλική', 'Γκριλ',' Ψητοπωλείο', 'Wine bar', 'Indin', 'Asian', 'Healthy']
   
   constructor(public db: AngularFirestore, private db2: AngularFireDatabase
    ) {
@@ -158,6 +158,9 @@ return firebase.firestore().collection('reviews').doc().set({name: name, review:
     });   
        
      return restaurants; 
+  }
+  deleteRestaurant(id: string){
+    return this.db.collection('restaurant').doc(id).delete();
   }
 
   // fetchLocationsRestaurants(){

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DatabaseService } from 'src/app/shared/database.service';
 
@@ -75,12 +75,27 @@ export class AddRestaurantPage implements OnInit {
   }
 
   ngOnInit() {
-    this.addRestaurantForm = this.formbuild.group({
-      name:[''],
-      address:[''],
-      description:[''],
-      phone:[''],
-      site:['']
+    this.addRestaurantForm = new FormGroup({
+      name:new FormControl(null,{
+        updateOn:'blur',
+        validators:[Validators.required]
+      }),
+      address:new FormControl(null,{
+        updateOn:'blur',
+        validators:[Validators.required]
+      }),
+      description:new FormControl(null,{
+        updateOn:'blur',
+        validators:[Validators.required]
+      }),
+      phone:new FormControl(null,{
+        updateOn:'blur',
+        validators:[Validators.required]
+      }),
+      site:new FormControl(null,{
+        updateOn:'blur',
+        validators:[Validators.required]
+      }),
     });
   }
   checkBoxes(tag:string){
@@ -94,12 +109,13 @@ export class AddRestaurantPage implements OnInit {
   }
   }
   formSubmit(){
+    
     this.addRestaurantForm.value.cousine = this.eventTaglist;
     this.addRestaurantForm.value.photo = this.downloadableURL;
 
 
     
-   console.log(this.addRestaurantForm)
+   console.log(this.downloadableURL)
     
     if(!this.addRestaurantForm.valid){
       return false;
@@ -108,6 +124,7 @@ export class AddRestaurantPage implements OnInit {
      
       this.database.addRestaurant(this.addRestaurantForm.value).then(res => {
         this.addRestaurantForm.reset();
+        this.router.navigate(['/restaurants']);
 
         
          

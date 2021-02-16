@@ -54,7 +54,8 @@ const routes: Routes = [
   {
     path: 'tags/:id',
     loadChildren: () => import('./tags/tags.module').then( m => m.TagsPageModule)
-  },  {
+  },
+  {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   },
@@ -63,7 +64,7 @@ const routes: Routes = [
     loadChildren: () => import('./admin/add-restaurant/add-restaurant.module').then( m => m.AddRestaurantPageModule)
   },
   {
-    path: 'edit-restaurant',
+    path: 'edit-restaurant/:id',
     loadChildren: () => import('./admin/edit-restaurant/edit-restaurant.module').then( m => m.EditRestaurantPageModule)
   },
   {
