@@ -16,6 +16,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
      BrowserModule, 
      IonicModule.forRoot(),
      AppRoutingModule,
+     HttpClientModule,
      AngularFireStorageModule
     ],
   providers: [

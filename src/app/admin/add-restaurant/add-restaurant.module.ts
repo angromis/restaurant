@@ -8,6 +8,9 @@ import { AddRestaurantPageRoutingModule } from './add-restaurant-routing.module'
 
 import { AddRestaurantPage } from './add-restaurant.page';
 import { FormatSizePipe } from './format-size.pipe';
+import { SharedModule } from 'src/app/shared/shared.module';
+//import { SharedModule } from '../../shared/shared.module';
+
 
 @NgModule({
   imports: [
@@ -15,7 +18,8 @@ import { FormatSizePipe } from './format-size.pipe';
     ReactiveFormsModule,
     FormsModule,
     IonicModule,
-    AddRestaurantPageRoutingModule
+    AddRestaurantPageRoutingModule,
+    SharedModule
   ],
   declarations: [AddRestaurantPage, FormatSizePipe]
 })
