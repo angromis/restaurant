@@ -244,13 +244,27 @@ addRestaurant(res: Restaurant){
     let description = res.description;
     let photo = res.photo;
     let phone = res.phone;
-    let address = res.address;
+    let location = res.location;
     let cousine = res.cousine;
     let site = res.site;
     let rating =5;
    console.log(res)
      return this.db.collection('restaurant').doc(name).set({name: name, description:description, photo: photo,
-        phone: phone, address: address, cousine: cousine, site: site,rating: rating});
+        phone: phone, location: location, cousine: cousine, site: site,rating: rating});
+
+}
+editRestaurant(res:Restaurant, id: string){
+
+  let name = res.name;
+  let description = res.description;
+  let photo = res.photo;
+  let phone = res.phone;
+  let location = res.location;
+  let cousine = res.cousine;
+  let site = res.site;
+  let rating =5;
+  return this.db.collection('restaurant').doc(id).update({name: name, description:description, photo: photo,
+    phone: phone, location: location, cousine: cousine, site: site,rating: rating});
 
 }
  

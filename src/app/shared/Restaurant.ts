@@ -7,7 +7,7 @@ export class Restaurant{
     cousine: string[];
     rating: number;
     phone: number;
-    address: string;
+    location: any[];
     site: string;
     photo: string;
 

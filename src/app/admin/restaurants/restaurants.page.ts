@@ -20,6 +20,9 @@ export class RestaurantsPage implements OnInit {
      
     })
   }
+  ionViewDidEnter(){
+    this.restaurants = this.database.fetchRestaurants();
+  }
 
   ngOnInit() {
     this.restaurants = this.database.fetchRestaurants();
@@ -30,9 +33,11 @@ export class RestaurantsPage implements OnInit {
   }
   onDelete(id: string,url:string){
     if (window.confirm('Do you really want to delete?')) {
-      this.afStorage.storage.refFromURL(url).delete()
+      if(url){ this.afStorage.storage.refFromURL(url).delete();}
+       
       this.database.deleteRestaurant(id);
       this.router.navigate(['/restaurants']);
+      window.location.reload();
     }
   }
   onEdit(id: string){

@@ -3,10 +3,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { DatabaseService } from 'src/app/shared/database.service';
 
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { PlaceLocation } from '../restaurants/location.model';
 
 export interface imgFile {
   name: string;
@@ -51,6 +52,7 @@ export class AddRestaurantPage implements OnInit {
     isFileUploaded: boolean;
   
     private filesCollection: AngularFirestoreCollection<imgFile>;
+    public isUploaded: BehaviorSubject<boolean> = new BehaviorSubject(false);
   constructor(
     public formbuild: FormBuilder,
      private database: DatabaseService, 
@@ -80,10 +82,6 @@ export class AddRestaurantPage implements OnInit {
         updateOn:'blur',
         validators:[Validators.required]
       }),
-      address:new FormControl(null,{
-        updateOn:'blur',
-        validators:[Validators.required]
-      }),
       description:new FormControl(null,{
         updateOn:'blur',
         validators:[Validators.required]
@@ -96,8 +94,17 @@ export class AddRestaurantPage implements OnInit {
         updateOn:'blur',
         validators:[Validators.required]
       }),
+      location:new FormControl(null,{
+        validators:[Validators.required]
+      }),
     });
   }
+
+
+  onLocationPicked(location: PlaceLocation){
+    this.addRestaurantForm.patchValue({location: location});
+  }
+
   checkBoxes(tag:string){
     console.log(tag)
     if(this.eventTaglist.includes(tag))
@@ -109,30 +116,47 @@ export class AddRestaurantPage implements OnInit {
   }
   }
   formSubmit(){
-    
-    this.addRestaurantForm.value.cousine = this.eventTaglist;
-    this.addRestaurantForm.value.photo = this.downloadableURL;
+    this.downloadableURL = '';
+    this.uploadImage();
 
+    this.isUploaded.subscribe((value) => {
 
+      if(value === true){
+        this.addRestaurantForm.value.cousine = this.eventTaglist;
+        this.addRestaurantForm.value.photo = this.downloadableURL;
     
-   console.log(this.downloadableURL)
     
-    if(!this.addRestaurantForm.valid){
-      return false;
-    }
-    else{
-     
-      this.database.addRestaurant(this.addRestaurantForm.value).then(res => {
-        this.addRestaurantForm.reset();
-        this.router.navigate(['/restaurants']);
-
         
-         
-      })
-        .catch(err => console.log(err));
+        console.log(this.downloadableURL)
+        
+        if(!this.addRestaurantForm.valid){
+          return false;
+        }
+        else{
+          
+          this.database.addRestaurant(this.addRestaurantForm.value).then(res => {
+            this.addRestaurantForm.reset();
+            this.router.navigate(['/restaurants']);
+    
+            
+              
+          })
+            .catch(err => console.log(err));
+    
+          
+        }
+    
+      }
+    })
 
-      
-    }
+
+ 
+
+
+    
+  
+    
+  
   }
   goHome(){
     this.router.navigate(['/dashboard']); 
@@ -142,7 +166,13 @@ export class AddRestaurantPage implements OnInit {
   selectImage(event: FileList) {
       
     this.file = event.item(0)
+    const fr = new FileReader();
+    fr.onload = () => {
+      const dataUrl = fr.result.toString();
+      this.downloadableURL = dataUrl;
+    };
 
+    fr.readAsDataURL(this.file);
     console.log(this.file)
     // Image validation
     if (this.file.type.split('/')[0] !== 'image') { 
@@ -153,7 +183,14 @@ export class AddRestaurantPage implements OnInit {
     
    
 }
+public ionViewDidLeave() {
+  
+  this.isUploaded.unsubscribe();
+ 
+}
 async uploadImage(){
+  
+  console.log("UploadImage")
   this.isFileUploading = true;
     this.isFileUploaded = false;
 
@@ -171,7 +208,8 @@ async uploadImage(){
 console.log(this.fileUploadTask.task)
     // Show uploading progress
     this.percentageVal = this.fileUploadTask.percentageChanges();
-    (await this.fileUploadTask).ref.getDownloadURL().then(url => {this.downloadableURL = url; });  
+    (await this.fileUploadTask).ref.getDownloadURL().then(url => {this.downloadableURL = url; this.isUploaded.next(true);});  
+    
     
   
 }

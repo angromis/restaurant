@@ -11,7 +11,7 @@
   
 </ion-header>
 
-<ion-content  [ngClass]="{darkMode: dark=== true}">
+<ion-content class="ion-text-center"  [ngClass]="{darkMode: dark=== true}">
   <div id="container">
 
     <ion-list>
@@ -25,10 +25,7 @@
         <ion-label [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"   style="font-size: large;" position="floating">Description</ion-label>
         <ion-textarea [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" type="textarea" formControlName="description"></ion-textarea>
       </ion-item>
-      <ion-item>
-        <ion-label [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"   style="font-size: large;" position="floating">Address</ion-label>
-        <ion-input [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"  type="text" formControlName="address"></ion-input>
-      </ion-item>
+   
       <ion-item>
         <ion-label [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"   style="font-size: large;" position="floating">Phone number</ion-label>
         <ion-input [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}"  type="number" formControlName="phone"></ion-input>
@@ -62,28 +59,42 @@
     </ion-list>
     
 
-    <ion-card class="ion-text-center">
+    <ion-card >
+      <ion-card-header>
+        <ion-card-title [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" >Image Uploaded</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+     
+          <ion-img width="200" height="150"style="middle;margin:0px 50px" [src]="downloadableURL"></ion-img>
+
+          <ion-button *ngIf="!changeImage" (click)="changeImage = !changeImage">Change Image</ion-button>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="changeImage" class="ion-text-center">
       <ion-card-header>
         <ion-card-title [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" >Choose Images to Upload</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <!-- <ion-button color="light" shape="round" size="medium">
+        <ion-button color="light" shape="round" size="medium">
           <input type="file" (change)="selectImage($event.target.files)" />
         </ion-button>
-        <ion-button (click)="uploadImage()">Upload Image</ion-button>
-        <div *ngIf="file"> -->
-          <ion-avatar>
-            <ion-img [src]="downloadableURL"></ion-img>
-          </ion-avatar>
+        <div *ngIf="file">
+         
+            <ion-img width="200" height="150"style="middle;margin:0px 50px" [src]="newdownloadableURL"></ion-img>
+          
 
-        <!-- </div> -->
+        </div>
        
         
          
         
       </ion-card-content>
     </ion-card>
+
+    <ion-img *ngIf="!changeLocation" [src]="mapImageUrl" width="250" height="200"style="middle;margin:0px 50px"></ion-img>
+    <ion-button *ngIf="!changeLocation" (click)="changeLocation = !changeLocation">Change Location</ion-button>
     
+    <app-location-picker *ngIf="changeLocation" (locationPick)="onLocationPicked($event)"></app-location-picker>
 
   </div>
   

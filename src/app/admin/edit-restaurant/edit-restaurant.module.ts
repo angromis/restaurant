@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { EditRestaurantPageRoutingModule } from './edit-restaurant-routing.module';
 
 import { EditRestaurantPage } from './edit-restaurant.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { EditRestaurantPage } from './edit-restaurant.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
+    SharedModule,
     EditRestaurantPageRoutingModule
   ],
   declarations: [EditRestaurantPage]

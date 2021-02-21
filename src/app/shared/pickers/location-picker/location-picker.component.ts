@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { MapModelComponent } from '../../map-model/map-model.component';
 import { HttpClient } from '@angular/common/http';
@@ -13,6 +13,7 @@ import { of } from 'rxjs';
 })
 export class LocationPickerComponent implements OnInit {
 
+  @Output() locationPick = new EventEmitter<PlaceLocation>();
   selectedLocationImage:string;
   isLoading = false;
   constructor(private modalCtrl: ModalController, private http: HttpClient) { }
@@ -40,6 +41,7 @@ export class LocationPickerComponent implements OnInit {
           pickedLocation.staticMapImageUrl = staticMapImageUrl;
           this.selectedLocationImage = staticMapImageUrl;
           this.isLoading = false;
+          this.locationPick.emit(pickedLocation);
         });
       });
       modalEl.present();
@@ -56,9 +58,8 @@ export class LocationPickerComponent implements OnInit {
   }
 
   private getMapImage(lat: number, lng: number, zoom: number){
-   // return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=${zoom}&size=500x300&markers=color:blue%7Clabel:S%7C${lat},${lng}&key=AIzaSyAQFMSBMQmkR2iR-PZ9prufnLRZc-1INMo`
-    return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=${zoom}&size=500x300&markers=color:orange%7Clabel:S%7C11211%7C11206%7C11222&key=AIzaSyAQFMSBMQmkR2iR-PZ9prufnLRZc-1INMo`
-   // return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=${zoom}&size=500x300&key=AIzaSyAQFMSBMQmkR2iR-PZ9prufnLRZc-1INMo`
+   
+   return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=${zoom}&size=500x300&markers=color:blue%7Clabel:Place%7C${lat},${lng}&key=AIzaSyAQFMSBMQmkR2iR-PZ9prufnLRZc-1INMo`
   }
 
 }
