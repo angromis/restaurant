@@ -27,9 +27,7 @@ ion-header {
   --color: rgb(27, 26, 26);
   --color-activated: white;
 }
-.searchbar {
-  --background: rgb(241, 241, 241);
-}
+
 
 ion-content {
   --ion-background-color: rgb(231, 252, 248);
@@ -45,8 +43,9 @@ ion-content {
 ion-footer {
   text-align: center;
   color: black;
-  background-color: rgb(231, 252, 248);
+  background-color: whitesmoke;
 }
+
 .darkMode {
   --ion-background-color: rgb(34, 1, 65);
 }

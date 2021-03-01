@@ -14,7 +14,7 @@ ion-content {
 ion-footer {
   text-align: center;
   color: black;
-  background-color: rgb(231, 252, 248);
+  background-color: whitesmoke;
 }
 .darkMode {
   --ion-background-color: rgb(34, 1, 65);
@@ -22,6 +22,7 @@ ion-footer {
 ion-button {
   --background: rgb(231, 252, 248);
 }
+
 .darkButton {
   --background: rgb(34, 1, 65);
 }

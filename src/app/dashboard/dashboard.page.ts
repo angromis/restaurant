@@ -30,7 +30,7 @@ export class DashboardPage implements OnInit {
    isItemAvailable = false;
    items = [];
    dark;
-isAdmin:boolean = false;
+   isAdmin:boolean = false;
 
   constructor(
     public dataService: DatabaseService,

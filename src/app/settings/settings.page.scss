@@ -5,6 +5,12 @@ ion-header {
   --ion-background-color: rgb(231, 252, 248);
 }
 
+ion-footer {
+  text-align: center;
+  color: black;
+  background-color: whitesmoke;
+}
+
 .darkclass {
   --ion-background-color: rgb(34, 1, 65);
 }

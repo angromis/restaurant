@@ -6,7 +6,7 @@
      
     <ion-title [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="font-size: medium;">Restaurants</ion-title>
     <ion-buttons slot="end">
-      <ion-icon (click)="goHome()" style="color:rgb(238, 210, 173); zoom:2.0" name="home"></ion-icon>
+      <ion-icon (click)="goHome()" [ngStyle]="{color: dark === true ? 'rgb(238, 210, 173)' : 'black'}" style="color:rgb(238, 210, 173); zoom:2.0" name="home"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
   
@@ -48,7 +48,6 @@
    </ion-list>
         
       
-  
 
 </ion-content>
 <ion-footer >@Copyright agromis</ion-footer>

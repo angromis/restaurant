@@ -38,6 +38,9 @@ export class MapPage implements OnInit, AfterViewInit {
 
    
   }
+  goHome(){
+    this.router.navigate(['/dashboard']); 
+  }
   ngAfterViewInit(){
 
     this.getGoogleMaps().then(googleMaps => {
