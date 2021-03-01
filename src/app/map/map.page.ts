@@ -1,17 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { DatabaseService} from "../shared/database.service";
 import {
+  ModalController,
   ToastController,
-  Platform
+  
 } from '@ionic/angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  Marker,
-  GoogleMapsAnimation,
-  MyLocation
-} from '@ionic-native/google-maps';
+
 import { Router } from '@angular/router';
 
 
@@ -20,15 +14,16 @@ import { Router } from '@angular/router';
   templateUrl: './map.page.html',
   styleUrls: ['./map.page.scss'],
 })
-export class MapPage implements OnInit {
-
+export class MapPage implements OnInit, AfterViewInit {
+  @ViewChild('map',null) mapElementRef: ElementRef;
+  clickListener: any;
+  googleMaps:any;
   dark;
-  map: GoogleMap;
   address:string;
   restaurants: any ;
 
   constructor( public toastCtrl: ToastController, public dataservice: DatabaseService,
-    private platform: Platform, private router: Router) { 
+     private router: Router,private modalCtrl: ModalController, private renderer: Renderer2) { 
 
       this.dataservice.db.collection('settings').doc("daily").snapshotChanges().subscribe(res => {
         let item: any = res.payload.data();
@@ -41,125 +36,58 @@ export class MapPage implements OnInit {
 
   ngOnInit() {
 
-    // this.platform.ready();
-    
-    
-    
-    // this.loadMap();
-    // console.log("a change");
-    
+   
   }
+  ngAfterViewInit(){
 
-  goHome(){
-    this.router.navigate(['/dashboard']); 
-  }
-  loadMap() {
-    
-    
-    this.map = GoogleMaps.create('map_canvas', {
-       camera: {
-        target: {
-          lat: 37.0741704,
-          lng: 23.0009802
-        },
-         zoom: 10,
-         tilt: 30
-       }
+    this.getGoogleMaps().then(googleMaps => {
+      this.googleMaps = googleMaps;
+      const mapEl = this.mapElementRef.nativeElement;
+      const map =  new googleMaps.Map(mapEl, {
+        center: {lat:38.0482, lng: 23.7558}, 
+        zoom: 16
+      });
+      googleMaps.event.addListenerOnce(map, 'idle', () => {
+        this.renderer.addClass(mapEl, 'visible');
+      });
+
+      this.clickListener = map.addListener('click', event => {
+        const selectedCoords = {lat: event.latLng.lat(), 
+                                lng: event.latLng.lng()
+        };
+        this.modalCtrl.dismiss(selectedCoords);
+      });
+    }).catch(err =>{
+      console.log(err);
     });
-    this.createMarkers();
-    this.goToMyLocation();
   }
 
-  createMarkers(){
+  private getGoogleMaps(): Promise<any>{
+    const win = window as any;
+    const googleModule = win.google;
 
-    this.dataservice.db.collection('restaurant').snapshotChanges().subscribe( res => {
-     
-      res.forEach(a => {
-      
+    if(googleModule && googleModule.maps){
+      return Promise.resolve(googleModule.maps);
+    }
 
-        let item:any = a.payload.doc.data();
-        item.id = a.payload.doc.id;
-
-        
-
-        let  marker2:Marker = this.map.addMarkerSync({
-          title: item.name,
-          snippet: item.name,
-          position: {
-            lat: item.location.latitude,
-            lng: item.location.longitude
-          },
-          
-          animation: GoogleMapsAnimation.BOUNCE
-  
-        });
-        
-        marker2.showInfoWindow();
-          
-
-      });
-      
-     
-    });
-      
-
-  }
-
-  goToMyLocation(){
-    //this.map.clear();
-
-    // Get the location of you
-    this.map.getMyLocation().then((location: MyLocation) => {
-      
-
-      // Move the map camera to the location with animation
-      this.map.animateCamera({
-        target: location.latLng,
-        zoom: 17,
-        duration: 5000
-      });
-
-      //add a marker
-      let marker: Marker = this.map.addMarkerSync({
-        
-        snippet: '',
-        position: location.latLng,
-        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-        title: 'You are here',
-        animation: GoogleMapsAnimation.BOUNCE
-      });
-      
-
-     
-
-      //show the infoWindow
-      
-      marker.showInfoWindow();
-      
-
-      //If clicked it, display the alert
-      marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-        this.showToast('clicked!');
-      });
-
-      this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
-        (data) => {
-            console.log("Click MAP",data);
+    return new Promise((resolve, reject)=>{
+      const script = document.createElement('script');
+      script.src = 'src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQFMSBMQmkR2iR-PZ9prufnLRZc-1INMo">';
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+      script.onload = () => {
+        const loadedGoogleModule = win.google;
+        if(loadedGoogleModule && loadedGoogleModule.maps){
+          resolve(loadedGoogleModule.maps);
         }
-      );
-    })
-    .catch(err => {
-      //this.loading.dismiss();
-      this.showToast(err.error_message);
-    });
-  }
-  async showToast(message: string) {
-    let toast = await this.toastCtrl.create({
-      message: message,
-      duration: 2000,
-      position: 'middle'
-    });
-    toast.present();
-  }
+        else{
+          reject('Google SDK not availiable')
+        }
 
+      };
+    })
+  }
+  //ngOnDestroy(){
+ 
 }

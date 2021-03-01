@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Environment } from '@ionic-native/google-maps';
 import { DatabaseService } from './shared/database.service';
+import { Plugins } from '@capacitor/core';
 
 @Component({
   selector: 'app-root',
